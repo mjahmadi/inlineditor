@@ -3,7 +3,7 @@
     display: inline-block;
     cursor: default;
 	z-index: 99999999;
-	background-color: #eee;
+	background-color: #f8f8f8;
 	border: 1px silver solid;
 	border-radius: 2.5px;
 	box-shadow: 0px 0px 5px 3px #eee;
@@ -73,6 +73,14 @@
 	padding: 2px;
 	display: inline-block;
 	vertical-align: middle;
+	background-color: white;
+}
+
+#inlineditor-popup label {
+	padding: 2px;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 12px;
 }
 
 #inlineditor-popup select {
@@ -82,6 +90,11 @@
 	display: inline-block;
 	vertical-align: middle;
 	min-width: 60px;
+	background-color: white;
+}
+
+select.colorpicker {
+	max-width: 100px;
 }
 
 #inlineditor-popup button i {
@@ -114,4 +127,94 @@
 	background-color: white;
 	z-index: 999999999;
 	box-shadow: 0px 0px 5px 5px silver;
+}
+
+/* FONT-FAMILY */
+option[value="Arial"] {
+	font-family: Arial;
+}
+
+option[value="Helvetica"] {
+	font-family: Helvetica;
+}
+
+option[value="Times"] {
+	font-family: Times;
+}
+
+option[value="Impact"] {
+	font-family: Impact;
+}
+
+option[value="BMitra"] {
+	font-family: BMitra;
+}
+
+option[value="BMitraBold"] {
+	font-family: BMitraBold;
+}
+
+option[value="BRoya"] {
+	font-family: BRoya;
+}
+
+option[value="BTabassom"] {
+	font-family: BTabassom;
+}
+
+option[value="BTitr"] {
+	font-family: BTitr;
+}
+
+option[value="BTitrTGE"] {
+	font-family: BTitrTGE;
+}
+
+option[value="BTraffic"] {
+	font-family: BTraffic;
+}
+
+option[value="BNasim"] {
+	font-family: BNasim;
+}
+
+option[value="Tahoma"] {
+	font-family: Tahoma;
+}
+
+/* FONT-SIZE */
+option[value="medium"], option[value="medium"]:checked {
+	font-size: medium;
+}
+
+option[value="xx-small"], option[value="xx-small"]:checked  {
+	font-size: xx-small;
+}
+
+option[value="x-small"], option[value="x-small"]:checked  {
+	font-size: x-small;
+}
+
+option[value="small"], option[value="small"]:checked  {
+	font-size: small;
+}
+
+option[value="large"], option[value="large"]:checked  {
+	font-size: large;
+}
+
+option[value="x-large"], option[value="x-large"]:checked  {
+	font-size: x-large;
+}
+
+option[value="xx-large"], option[value="xx-large"]:checked  {
+	font-size: xx-large;
+}
+
+option[value="smaller"], option[value="smaller"]:checked  {
+	font-size: smaller;
+}
+
+option[value="larger"], option[value="larger"]:checked  {
+	font-size: larger;
 }

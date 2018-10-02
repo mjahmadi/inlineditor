@@ -7,12 +7,13 @@
 			position: 'top',
 			labels: false,
 			spellcheck: true,
+			toolbarContentAlign: 'center',
 			buttons: ['fonts', 'sizes', '-', 'cut', 'copy', 'paste', 'delete', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'rtl', 'ltr', '-', 'indent', 'outdent', '-', 'foreColor', 'backColor', '-', 'heading', 'paragraph', '-' , 'horizontalRule', 'linkBreak', '-', 'orderedList', 'unorderedList', '-', 'table', '-', 'emoji', 'embed', 'youtube', 'media', 'audio', 'image', '-', 'link', 'unlink', '-', 'elements', '-', 'styles', 'removeFormat', '-', 'undo', 'redo', '-', 'code', '-', 'help', 'about'],
 			heading: ['Normal', ['Heading1', 'h1'], ['Heading2', 'h2'], ['Heading3', 'h3'], ['Heading4', 'h4'], ['Heading5', 'h5'], ['Heading6', 'h6']],
 			styles: [['Style-1', 'style1'], ['Style-2', 'style2']],
 			fonts: ['Arial', 'Helvetica', 'Times', 'Courier', 'Impact', 'B Nazanin', 'BMitra', 'BMitraBold', 'BRoya', 'BTabassom', 'BTitr', 'BTitrTGE', 'Yekan', 'BTraffic', 'BNasim', 'Tahoma'],
 			sizes: [['xx-small', '1'], ['x-small', '2'], ['small', '3'], ['normal', '4'], ['large', '5'], ['x-large', '6'], ['xx-large', '7']],
-			elements: ['div', 'form', 'label', 'input', 'textarea', 'select', 'checkbox', 'radio', 'submit', 'reset', 'button'],
+			elements: ['div', 'p', 'form', 'label', 'input', 'textarea', 'select', 'checkbox', 'radio', 'submit', 'reset', 'button'],
 			colors: [
 				'AliceBlue', 'AntiqueWhite', 'Aquamarine', 'Azure', 'Beige', 'Bisque',
 				'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood',
@@ -108,7 +109,10 @@
 			$(el).attr('contenteditable', true);
 			
 			
-			$('<div id="inlineditor-popup" readonly="true">').appendTo('body');
+			$('<div id="inlineditor-popup" readonly="true">').css({
+				'text-align': plugin.settings.toolbarContentAlign
+			}).appendTo('body');
+			
 			
 			$.each(plugin.settings.buttons, function(key, value) {
 				if (value === '-') {
@@ -249,9 +253,9 @@
 			if (plugin.settings.mode.indexOf('fixed') !== -1) {
 				$('#inlineditor-popup').addClass(plugin.settings.position);
 				if (plugin.settings.position === 'top') {
-					$('body').css('padding-top', $('#inlineditor-popup').height());
+					$('body').css('padding-top', $('#inlineditor-popup').height() + 5);
 				} else if (plugin.settings.position === 'bottom') {
-					$('body').css('padding-bottom', $('#inlineditor-popup').height());
+					$('body').css('padding-bottom', $('#inlineditor-popup').height() + 5);
 				}
 			}
         };

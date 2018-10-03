@@ -8,6 +8,10 @@
 			labels: false,
 			spellcheck: true,
 			toolbarContentAlign: 'center',
+			imagePathPrefix: '',
+			audioPathPrefix: '',
+			mediaPathPrefix: '',
+			embedPathPrefix: '',
 			buttons: ['fonts', 'sizes', '-', 'cut', 'copy', 'paste', 'delete', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'rtl', 'ltr', '-', 'indent', 'outdent', '-', 'foreColor', 'backColor', '-', 'heading', 'paragraph', '-' , 'horizontalRule', 'linkBreak', '-', 'orderedList', 'unorderedList', '-', 'table', '-', 'emoji', 'embed', 'youtube', 'media', 'audio', 'image', '-', 'link', 'unlink', '-', 'elements', '-', 'styles', 'removeFormat', '-', 'undo', 'redo', '-', 'code', '-', 'help', 'about'],
 			heading: ['Normal', ['Heading1', 'h1'], ['Heading2', 'h2'], ['Heading3', 'h3'], ['Heading4', 'h4'], ['Heading5', 'h5'], ['Heading6', 'h6']],
 			styles: [['Style-1', 'style1'], ['Style-2', 'style2']],
@@ -169,14 +173,14 @@
 							break;
 						
 						case 'insertImage':
-							var url = prompt('Image URL:');
+							var url = prompt('Image URL:', plugin.settings.imagePathPrefix);
 							if (url && url.trim()) {
 								document.execCommand(cmd, false, url.trim());
 							}
 							break;
 							
 						case 'insertMedia':
-							var url = prompt('Media URL:');
+							var url = prompt('Media URL:', plugin.settings.mediaPathPrefix);
 							if (url && url.trim()) {
 								var media = '<video controls>'+
 											'<source src="' + url.trim() + '" type="video/' + url.split('.').pop() + '">'+
@@ -186,16 +190,8 @@
 							}
 							break;
 							
-						case 'insertYoutube':
-							var url = prompt('Youtube Video URL:');
-							if (url && url.trim()) {
-								var media = '<iframe src="' + url.trim() + '"></iframe>';
-								document.execCommand('insertHTML', false, media);
-							}
-							break;
-							
 						case 'insertAudio':
-							var url = prompt('Audio URL:');
+							var url = prompt('Audio URL:', plugin.settings.audioPathPrefix);
 							if (url && url.trim()) {
 								var audio = '<audio controls>'+
 											'<source src="' + url.trim() + '" type="audio/' + url.split('.').pop() + '">'+
@@ -206,10 +202,18 @@
 							break;
 							
 						case 'insertEmbed':
-							var url = prompt('Audio URL:');
+							var url = prompt('Audio URL:', plugin.settings.embedPathPrefix);
 							if (url && url.trim()) {
 								var embed = '<embed src="' + url.trim() + '">';
 								document.execCommand('insertHTML', false, embed);
+							}
+							break;
+							
+						case 'insertYoutube':
+							var url = prompt('Youtube Video URL:');
+							if (url && url.trim()) {
+								var media = '<iframe src="' + url.trim() + '"></iframe>';
+								document.execCommand('insertHTML', false, media);
 							}
 							break;
 							

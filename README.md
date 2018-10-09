@@ -16,7 +16,6 @@ Lightweight On the fly HTML editor for web pages.
 ## HTML
 ```
 <div id="container"></div>
-
 ```
 
 ## Javascript

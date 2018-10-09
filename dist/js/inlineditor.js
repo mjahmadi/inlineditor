@@ -15,9 +15,9 @@
 			buttons: ['fonts', 'sizes', '-', 'cut', 'copy', 'paste', 'delete', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'rtl', 'ltr', '-', 'indent', 'outdent', '-', 'foreColor', 'backColor', '-', 'heading', 'paragraph', '-' , 'horizontalRule', 'linkBreak', '-', 'orderedList', 'unorderedList', '-', 'table', '-', 'emoji', 'embed', 'youtube', 'media', 'audio', 'image', '-', 'link', 'unlink', '-', 'elements', '-', 'styles', 'removeFormat', '-', 'undo', 'redo', '-', 'code', '-', 'help', 'about'],
 			heading: ['Normal', ['Heading1', 'h1'], ['Heading2', 'h2'], ['Heading3', 'h3'], ['Heading4', 'h4'], ['Heading5', 'h5'], ['Heading6', 'h6']],
 			styles: [['Style-1', 'style1'], ['Style-2', 'style2']],
-			fonts: ['Arial', 'Helvetica', 'Times', 'Courier', 'Impact', 'B Nazanin', 'BMitra', 'BMitraBold', 'BRoya', 'BTabassom', 'BTitr', 'BTitrTGE', 'Yekan', 'BTraffic', 'BNasim', 'Tahoma'],
+			fonts: ['Arial', 'Helvetica', 'Times', 'Courier', 'Impact', 'Shabnam', 'B Nazanin', 'BMitra', 'BMitraBold', 'BRoya', 'BTabassom', 'BTitr', 'BTitrTGE', 'Yekan', 'BTraffic', 'BNasim', 'Tahoma'],
 			sizes: [['xx-small', '1'], ['x-small', '2'], ['small', '3'], ['normal', '4'], ['large', '5'], ['x-large', '6'], ['xx-large', '7']],
-			elements: ['div', 'p', 'form', 'label', 'input', 'textarea', 'select', 'checkbox', 'radio', 'submit', 'reset', 'button'],
+			elements: ['div', 'p', 'form', 'label', 'input', 'password', 'textarea', 'select', 'checkbox', 'radio', 'submit', 'reset', 'button'],
 			colors: [
 				'AliceBlue', 'AntiqueWhite', 'Aquamarine', 'Azure', 'Beige', 'Bisque',
 				'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood',
@@ -98,7 +98,7 @@
 				audio: {icon:'fa fa-volume-up', title:'Audio', type:'button', elements:'', cmd:'insertAudio'},
 				link: {icon:'fa fa-link', title:'Create Link', type:'button', elements:'', cmd:'createLink'},
 				unlink: {icon:'fa fa-chain-broken', title:'Remove Link', type:'button', elements:'', cmd:'unlink'},
-				elements: {icon:'fa fa-list-alt', title:'HTML Form Elements', type:'select', items:plugin.settings.elements, elements:'', cmd:'elements'},
+				elements: {icon:'fa fa-list-alt', title:'HTML Form Elements', type:'select', items:plugin.settings.elements, elements:'', cmd:'insertElements'},
 				styles: {icon:'fa fa-text-width', title:'Styles', type:'select', items:plugin.settings.styles, elements:'', cmd:'styles'},
 				removeFormat: {icon:'fa fa-eraser', title:'Remove Formats', elements:'', cmd:'removeFormat'},
 				undo: {icon:'fa fa-rotate-left', title:'Undo', type:'button', elements:'', cmd:'undo'},
@@ -241,6 +241,63 @@
 							document.execCommand(cmd, false, $(e.target).val());
 							break;
 							
+						case 'insertElements':
+							var str = '';
+							
+							switch ($(e.target).val()) {
+								
+								case 'form':
+									str = '<form id="" name="" method="" action=""></form>';
+									break;
+								
+								case 'input':
+									str = '<input id="" name="" type="text" value=""/>';
+									break;
+								
+								case 'password':
+									str = '<input id="" name="" type="password" value=""/>';
+									break;
+								
+								case 'radio':
+									str = '<input id="" name="" type="radio" value=""/>&nbsp;radio';
+									break;
+								
+								case 'checkbox':
+									str = '<input id="" name="" type="checkbox" value=""/>&nbsp;checkbox';
+									break;
+								
+								case 'label':
+									str = '<label for="">Label</label>';
+									break;
+								
+								case 'submit':
+									str = '<button type="submit">Submit</button>';
+									break;
+								
+								case 'reset':
+									str = '<button type="reset">Reset</button>';
+									break;
+								
+								case 'button':
+									str = '<button id="" type="button">Button</button>';
+									break;
+								
+								case 'textarea':
+									str = '<textarea id="" name="">textarea</textarea>';
+									break;
+								
+								case 'select':
+									str = '<select id="" name=""><option value="val-1">val-1</option></select>';
+									break;
+									
+								default :
+									str = '<'+$(e.target).val()+'></'+$(e.target).val()+'>';
+								
+							}
+							
+							document.execCommand('insertHTML', false, str);
+							break;
+						
 						case 'styles':
 							wrappedselection = '<span class="' + $(e.target).val() + '">' + getSelectionText() + '</span>';
 							document.execCommand('insertHTML', false, wrappedselection);
@@ -251,6 +308,8 @@
 					}
 					
 					plugin.settings.afterEditCallback(el);
+					
+					$(e.target).val('');
 				}
 			});
 			

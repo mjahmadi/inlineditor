@@ -18,6 +18,9 @@
 			fonts: ['Arial', 'Helvetica', 'Times', 'Courier', 'Impact', 'Shabnam', 'B Nazanin', 'BMitra', 'BMitraBold', 'BRoya', 'BTabassom', 'BTitr', 'BTitrTGE', 'Yekan', 'BTraffic', 'BNasim', 'Tahoma'],
 			sizes: [['xx-small', '1'], ['x-small', '2'], ['small', '3'], ['normal', '4'], ['large', '5'], ['x-large', '6'], ['xx-large', '7']],
 			elements: ['div', 'p', 'form', 'label', ['input', 'text'], 'password', 'textarea', 'select', 'checkbox', 'radio', 'submit', 'reset', 'button'],
+			emoji: [
+				[128513, 128591], [9986, 10160], [128640, 128704]
+			],
 			colors: [
 				'AliceBlue', 'AntiqueWhite', 'Aquamarine', 'Azure', 'Beige', 'Bisque',
 				'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood',
@@ -90,7 +93,7 @@
 				indent: {icon:'fa fa-indent', title:'Indent', type:'button', elements:'', cmd:'indent'},
 				outdent: {icon:'fa fa-outdent', title:'Outdent', type:'button', elements:'', cmd:'outdent'},
 				table: {icon:'fa fa-table', title:'Table', type:'popup', elements:'', cmd:'table'},
-				emoji: {icon:'fa fa-smile-o', title:'Emoji', type:'popup', elements:'', cmd:'emoji'},
+				emoji: {icon:'fa fa-smile-o', title:'Emoji', type:'emojipicker', items:plugin.settings.emoji, elements:'', cmd:'insertEmoji'},
 				image: {icon:'fa fa-image', title:'Image', type:'button', elements:'', cmd:'insertImage'},
 				embed: {icon:'fa fa-plug', title:'Embed', type:'button', elements:'', cmd:'insertEmbed'},
 				media: {icon:'fa fa-video-camera', title:'Media', type:'button', elements:'', cmd:'insertMedia'},
@@ -142,6 +145,18 @@
 							$('select#'+value).append($('<option></option>').attr('value', '').text('---'));
 							$.each(buttons[value]['items'] ? buttons[value]['items'] : [], function(key, val){
 								$('select#'+value).append($('<option title="' + ($.isArray(val) ? val[1] : val) + '" style="background-color:' + ($.isArray(val) ? val[1] : val) + '"></option>').attr('value', ($.isArray(val) ? val[1] : val)).text(($.isArray(val) ? val[0] : val)));
+							});
+						} else if (buttons[value]['type'] === 'emojipicker') {
+							$('<select id="' + value + '" class="emojipicker" title="' + (buttons[value]['title'] ? buttons[value]['title'] :'') + '" data-cmd="' + buttons[value]['cmd'] + '"></select>').appendTo('#inlineditor-popup');
+							$('select#'+value).append($('<option></option>').attr('value', '').text('---'));
+							$.each(buttons[value]['items'] ? buttons[value]['items'] : [], function(key, val){
+								if ($.isArray(val)) {
+									for (var x = val[0]; x < val[1]; x++) {
+										$('select#'+value).append($('<option></option>').attr('value', '&#' + x + ';').html('&#' + x + ';'));
+									}
+								} else {
+									$('select#'+value).append($('<option></option>').attr('value', '&#' + val + ';').html('&#' + val + ';'));
+								}
 							});
 						}
 					}
@@ -291,6 +306,10 @@
 						case 'styles':
 							wrappedselection = '<span class="' + $(e.target).val() + '">' + getSelectionText() + '</span>';
 							document.execCommand('insertHTML', false, wrappedselection);
+							break;
+							
+						case 'insertEmoji':
+							document.execCommand('insertHTML', false, $(e.target).val());
 							break;
 						
 						default:

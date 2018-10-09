@@ -1,9 +1,10 @@
 # inlineditor
-On the fly HTML editor for web pages.
+Lightweight On the fly HTML editor for web pages.
 
 ## usage
 
-### Add to page header
+
+## Add to page header
 ```
 <script type="text/javascript" src="jquery.js"></script>
 <link rel="stylesheet" type="text/css"  href="font-awesome.min.css" />
@@ -12,13 +13,16 @@ On the fly HTML editor for web pages.
 <link rel="stylesheet" type="text/css"  href="dist/css/inlineditor.css" />
 ```
 
-### HTML
+## HTML
 ```
-<div id="container" contenteditable="true"></div>
+<div id="container"></div>
 
 ```
 
-### Javascript
+## Javascript
 ```
-var editor = $.inlineditor('div#container', {});
+var editor = $.inlineditor('div#container', {
+  /*options*/
+  ...
+});
 ```

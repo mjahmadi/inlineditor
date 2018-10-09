@@ -17,7 +17,7 @@
 			styles: [['Style-1', 'style1'], ['Style-2', 'style2']],
 			fonts: ['Arial', 'Helvetica', 'Times', 'Courier', 'Impact', 'Shabnam', 'B Nazanin', 'BMitra', 'BMitraBold', 'BRoya', 'BTabassom', 'BTitr', 'BTitrTGE', 'Yekan', 'BTraffic', 'BNasim', 'Tahoma'],
 			sizes: [['xx-small', '1'], ['x-small', '2'], ['small', '3'], ['normal', '4'], ['large', '5'], ['x-large', '6'], ['xx-large', '7']],
-			elements: ['div', 'p', 'form', 'label', 'input', 'password', 'textarea', 'select', 'checkbox', 'radio', 'submit', 'reset', 'button'],
+			elements: ['div', 'p', 'form', 'label', ['input', 'text'], 'password', 'textarea', 'select', 'checkbox', 'radio', 'submit', 'reset', 'button'],
 			colors: [
 				'AliceBlue', 'AntiqueWhite', 'Aquamarine', 'Azure', 'Beige', 'Bisque',
 				'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood',
@@ -250,20 +250,10 @@
 									str = '<form id="" name="" method="" action=""></form>';
 									break;
 								
-								case 'input':
-									str = '<input id="" name="" type="text" value=""/>';
-									break;
-								
-								case 'password':
-									str = '<input id="" name="" type="password" value=""/>';
-									break;
-								
-								case 'radio':
-									str = '<input id="" name="" type="radio" value=""/>&nbsp;radio';
-									break;
-								
-								case 'checkbox':
-									str = '<input id="" name="" type="checkbox" value=""/>&nbsp;checkbox';
+								case 'input': case 'password': case 'radio': case 'checkbox': case 'file': case 'tel': case 'email':
+								case 'color': case 'date': case 'number': case 'range': case 'search': case 'time': case 'url':
+								case 'week': case 'month': case 'image': case 'hidden': case 'datetime-local':
+									str = '<input id="" name="" type="'+$(e.target).val()+'" value=""/>';
 									break;
 								
 								case 'label':

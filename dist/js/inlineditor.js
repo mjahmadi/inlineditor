@@ -27,18 +27,17 @@
 				'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood',
 				'CadetBlue', 'Chartreuse', 'Chocolate', 'Coral', 'CornflowerBlue',
 				'Cornsilk', 'Crimson', 'Cyan', 'DarkBlue', 'DarkCyan', 'DarkGoldenRod',
-				'DarkGray', 'DarkGrey', 'DarkGreen', 'DarkKhaki', 'DarkMagenta',
-				'DarkOliveGreen', 'DarkOrange', 'DarkOrchid', 'DarkRed', 'DarkSalmon',
-				'DarkSeaGreen', 'DarkSlateBlue', 'DarkSlateGray', 'DarkSlateGrey',
-				'DarkTurquoise', 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DimGray',
-				'DimGrey', 'DodgerBlue', 'FireBrick', 'FloralWhite', 'ForestGreen',
-				'Fuchsia', 'Gainsboro', 'GhostWhite', 'Gold', 'GoldenRod', 'Gray', 'Green',
-				'GreenYellow', 'HoneyDew', 'HotPink', 'IndianRed', 'Indigo', 'Ivory',
-				'Khaki', 'Lavender ', 'LavenderBlush', 'LawnGreen', 'LemonChiffon',
-				'LightBlue', 'LightCoral', 'LightCyan', 'LightGoldenRodYellow', 'LightGray',
-				'LightGrey', 'LightGreen', 'LightPink', 'LightSalmon', 'LightSeaGreen',
-				'LightSkyBlue', 'LightSlateGray', 'LightSlateGrey', 'LightSteelBlue',
-				'LightYellow', 'Lime', 'LimeGreen', 'Linen', 'Magenta', 'Maroon', 
+				'DarkGrey', 'DarkGreen', 'DarkKhaki', 'DarkMagenta', 'DarkOliveGreen',
+				'DarkOrange', 'DarkOrchid', 'DarkRed', 'DarkSalmon', 'DarkSeaGreen',
+				'DarkSlateBlue', 'DarkSlateGrey', 'DarkTurquoise', 'DarkViolet',
+				'DeepPink', 'DeepSkyBlue', 'DimGray', 'DodgerBlue', 'FireBrick',
+				'FloralWhite', 'ForestGreen', 'Fuchsia', 'Gainsboro', 'GhostWhite',
+				'Gold', 'GoldenRod', 'Gray', 'Green', 'GreenYellow', 'HoneyDew',
+				'HotPink', 'IndianRed', 'Indigo', 'Ivory', 'Khaki', 'Lavender ',
+				'LavenderBlush', 'LawnGreen', 'LemonChiffon', 'LightBlue', 'LightCoral',
+				'LightCyan', 'LightGoldenRodYellow', 'LightGray', 'LightGreen', 
+				'LightPink', 'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGrey',
+				'LightSteelBlue', 'LightYellow', 'Lime', 'LimeGreen', 'Linen', 'Magenta', 'Maroon', 
 				'MediumAquaMarine', 'MediumBlue', 'MediumOrchid', 'MediumPurple',
 				'MediumSeaGreen', 'MediumSlateBlue', 'MediumSpringGreen', 'MediumTurquoise',
 				'MediumVioletRed', 'MidnightBlue', 'MintCream', 'MistyRose', 'Moccasin',
@@ -47,8 +46,8 @@
 				'PaleVioletRed', 'PapayaWhip', 'PeachPuff', 'Peru', 'Pink', 'Plum ',
 				'PowderBlue', 'Purple', 'RebeccaPurple', 'Red', 'RosyBrown', 'RoyalBlue',
 				'SaddleBrown', 'Salmon', 'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna',
-				'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'SlateGrey', 'Snow',
-				'SpringGreen', 'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise',
+				'Silver', 'SkyBlue', 'SlateBlue', 'SlateGrey', 'Snow', 'SpringGreen',
+				'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise',
 				'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'
 			],
 			
@@ -102,7 +101,7 @@
 				unorderedList: {icon:'fa fa-list-ul', title:'Unorderd List', type:'button', elements:'', cmd:'insertUnorderedList'},
 				indent: {icon:'fa fa-indent', title:'Indent', type:'button', elements:'', cmd:'indent'},
 				outdent: {icon:'fa fa-outdent', title:'Outdent', type:'button', elements:'', cmd:'outdent'},
-				table: {icon:'fa fa-table', title:'Table', type:'popup', elements:'', cmd:'table'},
+				table: {icon:'fa fa-table', title:'Table', type:'button', elements:'', cmd:'insertTable'},
 				emoji: {icon:'fa fa-smile-o', title:'Emoji', type:'emojipicker', items:plugin.settings.emoji, elements:'', cmd:'insertEmoji'},
 				image: {icon:'fa fa-image', title:'Image', type:'button', elements:'', cmd:'insertImage'},
 				embed: {icon:'fa fa-plug', title:'Embed', type:'button', elements:'', cmd:'insertEmbed'},
@@ -214,6 +213,33 @@
 							}
 							break;
 						
+						case 'insertTable':
+							var buf = prompt('Table Dimension [5x10]:');
+							dim = buf.split('x', 2);
+							console.log(dim);
+							if (dim[0] && dim[1]) {
+								
+								var td_count = parseInt(dim[0]);
+								var tr_count = parseInt(dim[1]);
+								
+								var str = '<table border="1" style="width:100%">';
+								for (i=0; i<tr_count; i++) {
+									str += '<tr>';
+									
+									for (j=0; j<td_count; j++) {
+										str += '<td></td>';
+									}
+									
+									str += '</tr>';
+								}
+								str += '</table>';
+								
+								document.execCommand('insertHTML', false, str);
+							} else {
+								alert('Invalid table dimension!');
+							}
+							break;
+							
 						case 'insertImage':
 							var url = prompt('Image URL:', plugin.settings.imagePathPrefix);
 							if (url && url.trim()) {
@@ -261,6 +287,8 @@
 							
 						case 'showHTMLCode':
 							var codeDlg = window.open('', 'codeDlg', 'status=1,width=640,height=480,scrollbars=yes,resizable=yes,top=50,left=50');
+							codeDlg.document.title = 'inlineditor - Code View';
+
 							codeDlg.document.write('<xmp>' + $(el).html().trim() + '</xmp>');
 							break;
 							

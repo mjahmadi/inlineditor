@@ -4,7 +4,7 @@ Inlineditor is a WYSIWYG editor for websites. Its goal is to be powerful and sim
 ## usage
 
 
-## Add to page header
+#### Add to page header
 ```
 <script type="text/javascript" src="jquery.js"></script>
 <link rel="stylesheet" type="text/css"  href="font-awesome.min.css" />
@@ -13,12 +13,12 @@ Inlineditor is a WYSIWYG editor for websites. Its goal is to be powerful and sim
 <link rel="stylesheet" type="text/css"  href="dist/css/inlineditor.css" />
 ```
 
-## HTML
+#### HTML
 ```
 <div id="container"></div>
 ```
 
-## Javascript
+#### Javascript
 ```
 var editor = $.inlineditor('div#container', {
   /*options*/

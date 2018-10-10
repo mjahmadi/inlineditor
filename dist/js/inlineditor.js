@@ -106,7 +106,7 @@
 				removeFormat: {icon:'fa fa-eraser', title:'Remove Formats', elements:'', cmd:'removeFormat'},
 				undo: {icon:'fa fa-rotate-left', title:'Undo', type:'button', elements:'', cmd:'undo'},
 				redo: {icon:'fa fa-rotate-right', title:'Redo', type:'button', elements:'', cmd:'redo'},
-				code: {icon:'fa fa-code', title:'Code', type:'button', elements:'', cmd:'code'},
+				code: {icon:'fa fa-code', title:'Code', type:'button', elements:'', cmd:'showHTMLCode'},
 				help: {icon:'fa fa-support', title:'Help', type:'button', elements:'', cmd:'help'},
 				about: {icon:'fa fa-info', title:'About', type:'button', elements:'', cmd:'about'}
 			};
@@ -230,6 +230,11 @@
 								var media = '<iframe src="' + url.trim() + '"></iframe>';
 								document.execCommand('insertHTML', false, media);
 							}
+							break;
+							
+						case 'showHTMLCode':
+							var codeDlg = window.open('', 'codeDlg', 'status=1,width=640,height=480,scrollbars=yes,resizable=yes,top=50,left=50');
+							codeDlg.document.write('<xmp>' + $(el).html().trim() + '</xmp>');
 							break;
 							
 						default:

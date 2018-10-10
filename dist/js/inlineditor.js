@@ -1,7 +1,7 @@
 ;(function($) {
 
     $.inlineditor = function(el, options) {
-
+		
         var defaults = {
             mode: 'fixed',
 			position: 'top',
@@ -12,7 +12,8 @@
 			audioPathPrefix: '',
 			mediaPathPrefix: '',
 			embedPathPrefix: '',
-			buttons: ['fonts', 'sizes', '-', 'cut', 'copy', 'paste', 'delete', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'rtl', 'ltr', '-', 'indent', 'outdent', '-', 'foreColor', 'backColor', '-', 'heading', 'paragraph', '-' , 'horizontalRule', 'linkBreak', '-', 'orderedList', 'unorderedList', '-', 'table', '-', 'emoji', 'embed', 'youtube', 'media', 'audio', 'image', '-', 'link', 'unlink', '-', 'elements', '-', 'styles', 'removeFormat', '-', 'undo', 'redo', '-', 'code', '-', 'help', 'about'],
+			toolbar: 'full',
+			buttons: ['fonts', 'sizes', '-', 'cut', 'copy', 'paste', 'delete', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'rtl', 'ltr', '-', 'indent', 'outdent', '-', 'foreColor', 'backColor', '-', 'heading', 'paragraph', '-' , 'horizontalRule', 'linkBreak', '-', 'orderedList', 'unorderedList', '-', 'table', '-', 'emoji', 'embed', 'youtube', 'media', 'audio', 'image', '-', 'link', 'unlink', '-', 'elements', '-', 'styles', 'removeFormat', '-', 'undo', 'redo', '-', 'code', '-', 'about'],
 			heading: ['Normal', ['Heading1', 'h1'], ['Heading2', 'h2'], ['Heading3', 'h3'], ['Heading4', 'h4'], ['Heading5', 'h5'], ['Heading6', 'h6']],
 			styles: [['Style-1', 'style1'], ['Style-2', 'style2']],
 			fonts: ['Arial', 'Helvetica', 'Times', 'Courier', 'Impact', 'Shabnam', 'B Nazanin', 'BMitra', 'BMitraBold', 'BRoya', 'BTabassom', 'BTitr', 'BTitrTGE', 'Yekan', 'BTraffic', 'BNasim', 'Tahoma'],
@@ -55,11 +56,20 @@
 			afterEditCallback: function(el) {}
         };
 		
-        var plugin = this;
 		
+        var plugin = this;
         plugin.settings = {};
 		
+		
         var init = function() {
+			
+			
+			var browser = getBrowserInfo();
+			if (browser.name.toLowerCase().indexOf('ie') !== -1 || browser.name.toLowerCase().indexOf('trident') !== -1 || browser.name.toLowerCase().indexOf('edge') !== -1) {
+				alert('inlineditor\n\nInternet Explorer and Edge are not supported!');
+			}
+			
+			
             plugin.settings = $.extend({}, defaults, options);
             plugin.el = el;
 			
@@ -107,9 +117,17 @@
 				undo: {icon:'fa fa-rotate-left', title:'Undo', type:'button', elements:'', cmd:'undo'},
 				redo: {icon:'fa fa-rotate-right', title:'Redo', type:'button', elements:'', cmd:'redo'},
 				code: {icon:'fa fa-code', title:'Code', type:'button', elements:'', cmd:'showHTMLCode'},
-				help: {icon:'fa fa-support', title:'Help', type:'button', elements:'', cmd:'help'},
 				about: {icon:'fa fa-info', title:'About', type:'button', elements:'', cmd:'about'}
 			};
+			
+			
+			if (plugin.settings.toolbar === 'full') {
+				plugin.settings.buttons = ['fonts', 'sizes', '-', 'cut', 'copy', 'paste', 'delete', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'rtl', 'ltr', '-', 'indent', 'outdent', '-', 'foreColor', 'backColor', '-', 'heading', 'paragraph', '-' , 'horizontalRule', 'linkBreak', '-', 'orderedList', 'unorderedList', '-', 'table', '-', 'emoji', 'embed', 'youtube', 'media', 'audio', 'image', '-', 'link', 'unlink', '-', 'elements', '-', 'styles', 'removeFormat', '-', 'undo', 'redo', '-', 'code', '-', 'about'];
+			} else if (plugin.settings.toolbar === 'basic') {
+				plugin.settings.buttons = ['fonts', 'sizes', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'foreColor', 'backColor', '-', 'link', 'unlink', '-', 'removeFormat', '-', 'undo', 'redo', '-', 'about'];
+			} else if(plugin.settings.toolbar === 'editor') {
+				plugin.settings.buttons = ['fonts', 'sizes', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'rtl', 'ltr', '-', 'foreColor', 'backColor', '-', 'heading', 'paragraph', '-', 'orderedList', 'unorderedList', '-', 'table', '-', 'link', 'unlink', '-', 'removeFormat', '-', 'undo', 'redo', '-', 'about'];
+			}
 			
 			
 			$(el).attr('spellcheck', plugin.settings.spellcheck);
@@ -131,7 +149,7 @@
 							
 						} else if (buttons[value]['type'] === 'select') {
 							if (plugin.settings.showLabels) {
-								$('<label for="' + value + '">' + (buttons[value]['title'] ? buttons[value]['title'] :'') + '</label>').appendTo('#inlineditor-popup');
+								$('<span>&nbsp;<label for="' + value + '">' + (buttons[value]['title'] ? buttons[value]['title'] :'') + ':</label></span>').appendTo('#inlineditor-popup');
 							}
 							
 							$('<select id="' + value + '" title="' + (buttons[value]['title'] ? buttons[value]['title'] :'') + '" data-cmd="' + buttons[value]['cmd'] + '"></select>').appendTo('#inlineditor-popup');
@@ -141,12 +159,20 @@
 							});
 							
 						} else if (buttons[value]['type'] === 'colorpicker') {
+							if (plugin.settings.showLabels) {
+								$('<span>&nbsp;<label for="' + value + '">' + (buttons[value]['title'] ? buttons[value]['title'] :'') + ':</label></span>').appendTo('#inlineditor-popup');
+							}
+							
 							$('<select id="' + value + '" class="colorpicker" title="' + (buttons[value]['title'] ? buttons[value]['title'] :'') + '" data-cmd="' + buttons[value]['cmd'] + '"></select>').appendTo('#inlineditor-popup');
 							$('select#'+value).append($('<option></option>').attr('value', '').text('---'));
 							$.each(buttons[value]['items'] ? buttons[value]['items'] : [], function(key, val){
 								$('select#'+value).append($('<option title="' + ($.isArray(val) ? val[1] : val) + '" style="background-color:' + ($.isArray(val) ? val[1] : val) + '"></option>').attr('value', ($.isArray(val) ? val[1] : val)).text(($.isArray(val) ? val[0] : val)));
 							});
 						} else if (buttons[value]['type'] === 'emojipicker') {
+							if (plugin.settings.showLabels) {
+								$('<span>&nbsp;<label for="' + value + '">' + (buttons[value]['title'] ? buttons[value]['title'] :'') + ':</label></span>').appendTo('#inlineditor-popup');
+							}
+							
 							$('<select id="' + value + '" class="emojipicker" title="' + (buttons[value]['title'] ? buttons[value]['title'] :'') + '" data-cmd="' + buttons[value]['cmd'] + '"></select>').appendTo('#inlineditor-popup');
 							$('select#'+value).append($('<option></option>').attr('value', '').text('---'));
 							$.each(buttons[value]['items'] ? buttons[value]['items'] : [], function(key, val){
@@ -162,6 +188,7 @@
 					}
 				}
 			});
+			
 			
 			$('#inlineditor-popup').on('click', function(e) {
 				if ($(e.target).is('input, button, i')) {
@@ -235,6 +262,10 @@
 						case 'showHTMLCode':
 							var codeDlg = window.open('', 'codeDlg', 'status=1,width=640,height=480,scrollbars=yes,resizable=yes,top=50,left=50');
 							codeDlg.document.write('<xmp>' + $(el).html().trim() + '</xmp>');
+							break;
+							
+						case 'about':
+							alert('inlineditor\nLightweight WYSIWYG editor for websites.\n\nhttps://github.com/mjahmadi/inlineditor');
 							break;
 							
 						default:
@@ -379,6 +410,33 @@
 			return text;
 		};
 		
+		
+		var getBrowserInfo = function () {
+			var ua = navigator.userAgent,tem,M=ua.match(/(opera|chrome|safari|firefox|msie|trident|edge(?=\/))\/?\s*(\d+)/i) || [];
+			
+			if (/trident/i.test(M[1])) {
+				tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+				return {name:'IE ', version:(tem[1]||'')};
+			}
+			
+			if (M[1] === 'Chrome') {
+				tem = ua.match(/\bOPR\/(\d+)/);
+				if (tem !== null) {
+					return {name:'Opera', version:tem[1]};
+				}
+			}
+			
+			M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+			
+			if ((tem=ua.match(/version\/(\d+)/i)) !== null) {
+				M.splice(1,1,tem[1]);
+			}
+			
+			return {
+				name: M[0],
+				version: M[1]
+			};
+		};
 		
         init();
 

@@ -1,21 +1,22 @@
 ;(function($) {
 
-    $.inlineditor = function(el, options) {
+    $.fn.inlineditor = function(el, options) {
 		
         var defaults = {
             mode: 'fixed',
 			position: 'top',
-			labels: false,
 			spellcheck: true,
+			toolbarDirection: 'ltr',
 			toolbarContentAlign: 'center',
 			imagePathPrefix: '',
 			audioPathPrefix: '',
 			mediaPathPrefix: '',
 			embedPathPrefix: '',
+			language: '',
+			buttons: [],
 			toolbar: 'full',
-			buttons: ['fonts', 'sizes', '-', 'cut', 'copy', 'paste', 'delete', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'rtl', 'ltr', '-', 'indent', 'outdent', '-', 'foreColor', 'backColor', '-', 'heading', 'paragraph', '-' , 'horizontalRule', 'linkBreak', '-', 'orderedList', 'unorderedList', '-', 'table', '-', 'emoji', 'embed', 'youtube', 'media', 'audio', 'image', '-', 'link', 'unlink', '-', 'elements', '-', 'styles', 'removeFormat', '-', 'undo', 'redo', '-', 'code', '-', 'about'],
 			heading: ['Normal', ['Heading1', 'h1'], ['Heading2', 'h2'], ['Heading3', 'h3'], ['Heading4', 'h4'], ['Heading5', 'h5'], ['Heading6', 'h6']],
-			styles: [['Style-1', 'style1'], ['Style-2', 'style2']],
+			styles: [],
 			fonts: ['Arial', 'Helvetica', 'Times', 'Courier', 'Impact', 'Shabnam', 'B Nazanin', 'BMitra', 'BMitraBold', 'BRoya', 'BTabassom', 'BTitr', 'BTitrTGE', 'Yekan', 'BTraffic', 'BNasim', 'Tahoma'],
 			sizes: [['xx-small', '1'], ['x-small', '2'], ['small', '3'], ['normal', '4'], ['large', '5'], ['x-large', '6'], ['xx-large', '7']],
 			elements: ['div', 'p', 'form', 'label', ['input', 'text'], 'password', 'textarea', 'select', 'checkbox', 'radio', 'submit', 'reset', 'button'],
@@ -47,7 +48,7 @@
 				'PowderBlue', 'Purple', 'RebeccaPurple', 'Red', 'RosyBrown', 'RoyalBlue',
 				'SaddleBrown', 'Salmon', 'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna',
 				'Silver', 'SkyBlue', 'SlateBlue', 'SlateGrey', 'Snow', 'SpringGreen',
-				'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise',
+				'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Transparent',
 				'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'
 			],
 			
@@ -58,6 +59,59 @@
 		
         var plugin = this;
         plugin.settings = {};
+			
+		plugin.settings = $.extend({}, defaults, options);
+		plugin.el = el;
+
+		
+		var buttons = {
+			bold: {icon:'fa fa-bold', title:'Bold', type:'button', elements:'', cmd:'bold'},
+			italic: {icon:'fa fa-italic', title:'Italic', type:'button', elements:'', cmd:'italic'},
+			justifyLeft: {icon:'fa fa-align-left', title:'Align Left', type:'button', elements:'', cmd:'justifyLeft'},
+			justifyCenter: {icon:'fa fa-align-center', title:'Align Center', type:'button', elements:'', cmd:'justifyCenter'},
+			justifyRight: {icon:'fa fa-align-right', title:'Align Right', type:'button', elements:'', cmd:'justifyRight'},
+			justifyFull: {icon:'fa fa-align-justify', title:'Justify', type:'button', elements:'', cmd:'justifyFull'},
+			cut: {icon:'fa fa-cut', title:'Cut Selection', type:'button', elements:'', cmd:'cut'},
+			copy: {icon:'fa fa-copy', title:'Copy Selection', type:'button', elements:'', cmd:'copy'},
+			paste: {icon:'fa fa-paste', title:'Paste', type:'button', elements:'', cmd:'paste'},
+			delete: {icon:'fa fa-trash', title:'Delete Selection', type:'button', elements:'', cmd:'delete'},
+			underline: {icon:'fa fa-underline', title:'Underline', type:'button', elements:'', cmd:'underline'},
+			strikethrough: {icon:'fa fa-strikethrough', title:'Strikethrough', type:'button', elements:'', cmd:'strikethrough'},
+			subscript: {icon:'fa fa-subscript', title:'Subscript', type:'button', elements:'', cmd:'subscript'},
+			superscript: {icon:'fa fa-superscript', title:'Superscript', type:'button', elements:'', cmd:'superscript'},
+			fonts: {icon:'fa fa-font', title:'Fonts', type:'select', items:plugin.settings.fonts, elements:'', cmd:'fontName'},
+			sizes: {icon:'fa fa-text-height', title:'Font Size', type:'select', items:plugin.settings.sizes, elements:'', cmd:'fontSize'},
+			foreColor: {icon:'fa fa-paint-brush', title:'Text Color', type:'colorpicker', items:plugin.settings.colors, elements:'', cmd:'foreColor'},
+			backColor: {icon:'fa fa-tint', title:'Background Color', type:'colorpicker', items:plugin.settings.colors, elements:'', cmd:'backColor'},
+			rtl: {icon:'fa fa-long-arrow-left', title:'RTL', type:'button', elements:'', cmd:'rtl'},
+			ltr: {icon:'fa fa-long-arrow-right', title:'LTR', type:'button', elements:'', cmd:'ltr'},
+			heading: {icon:'fa fa-header', title:'Heading', type:'select', items:plugin.settings.heading, elements:'', cmd:'heading'},
+			paragraph: {icon:'fa fa-paragraph', title:'Paragraph', type:'button', elements:'', cmd:'insertparagraph'},
+			linkBreak: {icon:'fa fa-level-down', title:'Line Break', type:'button', elements:'', cmd:'insertLineBreak'},
+			horizontalRule: {icon:'fa fa-minus', title:'Horizontal Rule', type:'button', elements:'', cmd:'insertHorizontalRule'},
+			orderedList: {icon:'fa fa-list-ol', title:'Orderd List', type:'button', elements:'', cmd:'insertOrderedList'},
+			unorderedList: {icon:'fa fa-list-ul', title:'Unorderd List', type:'button', elements:'', cmd:'insertUnorderedList'},
+			indent: {icon:'fa fa-indent', title:'Indent', type:'button', elements:'', cmd:'indent'},
+			outdent: {icon:'fa fa-outdent', title:'Outdent', type:'button', elements:'', cmd:'outdent'},
+			leftQuote: {icon:'fa fa-quote-left', title:'Left Quote', type:'button', elements:'', cmd:'leftQuote'},
+			rightQuote: {icon:'fa fa-quote-right', title:'Right Quote', type:'button', elements:'', cmd:'rightQuote'},
+			table: {icon:'fa fa-table', title:'Table', type:'button', elements:'', cmd:'insertTable'},
+			emoji: {icon:'fa fa-smile-o', title:'Emoji', type:'emojipicker', items:plugin.settings.emoji, elements:'', cmd:'insertEmoji'},
+			image: {icon:'fa fa-image', title:'Image', type:'button', elements:'', cmd:'insertImage'},
+			embed: {icon:'fa fa-plug', title:'Embed', type:'button', elements:'', cmd:'insertEmbed'},
+			media: {icon:'fa fa-video-camera', title:'Media', type:'button', elements:'', cmd:'insertMedia'},
+			youtube: {icon:'fa fa-film', title:'Youtube', type:'button', elements:'', cmd:'insertYoutube'},
+			audio: {icon:'fa fa-volume-up', title:'Audio', type:'button', elements:'', cmd:'insertAudio'},
+			link: {icon:'fa fa-link', title:'Create Link', type:'button', elements:'', cmd:'createLink'},
+			unlink: {icon:'fa fa-chain-broken', title:'Remove Link', type:'button', elements:'', cmd:'unlink'},
+			elements: {icon:'fa fa-list-alt', title:'HTML Form Elements', type:'select', items:plugin.settings.elements, elements:'', cmd:'insertElements'},
+			styles: {icon:'fa fa-text-width', title:'Styles', type:'select', items:plugin.settings.styles, elements:'', cmd:'styles'},
+			removeFormat: {icon:'fa fa-eraser', title:'Remove Formats', elements:'', cmd:'removeFormat'},
+			undo: {icon:'fa fa-rotate-left', title:'Undo', type:'button', elements:'', cmd:'undo'},
+			redo: {icon:'fa fa-rotate-right', title:'Redo', type:'button', elements:'', cmd:'redo'},
+			code: {icon:'fa fa-code', title:'Code', type:'button', elements:'', cmd:'showHTMLCode'},
+			about: {icon:'fa fa-info', title:'About', type:'button', elements:'', cmd:'about'}
+		};
 		
 		
         var init = function() {
@@ -69,63 +123,25 @@
 			}
 			
 			
-            plugin.settings = $.extend({}, defaults, options);
-            plugin.el = el;
-			
-			var buttons = {
-				bold: {icon:'fa fa-bold', title:'Bold', type:'button', elements:'', cmd:'bold'},
-				italic: {icon:'fa fa-italic', title:'Italic', type:'button', elements:'', cmd:'italic'},
-				justifyLeft: {icon:'fa fa-align-left', title:'Align Left', type:'button', elements:'', cmd:'justifyLeft'},
-				justifyCenter: {icon:'fa fa-align-center', title:'Align Center', type:'button', elements:'', cmd:'justifyCenter'},
-				justifyRight: {icon:'fa fa-align-right', title:'Align Right', type:'button', elements:'', cmd:'justifyRight'},
-				justifyFull: {icon:'fa fa-align-justify', title:'Justify', type:'button', elements:'', cmd:'justifyFull'},
-				cut: {icon:'fa fa-cut', title:'Cut Selection', type:'button', elements:'', cmd:'cut'},
-				copy: {icon:'fa fa-copy', title:'Copy Selection', type:'button', elements:'', cmd:'copy'},
-				paste: {icon:'fa fa-paste', title:'Paste', type:'button', elements:'', cmd:'paste'},
-				delete: {icon:'fa fa-trash', title:'Delete Selection', type:'button', elements:'', cmd:'delete'},
-				underline: {icon:'fa fa-underline', title:'Underline', type:'button', elements:'', cmd:'underline'},
-				strikethrough: {icon:'fa fa-strikethrough', title:'Strikethrough', type:'button', elements:'', cmd:'strikethrough'},
-				subscript: {icon:'fa fa-subscript', title:'Subscript', type:'button', elements:'', cmd:'subscript'},
-				superscript: {icon:'fa fa-superscript', title:'Superscript', type:'button', elements:'', cmd:'superscript'},
-				fonts: {icon:'fa fa-font', title:'Fonts', type:'select', items:plugin.settings.fonts, elements:'', cmd:'fontName'},
-				sizes: {icon:'fa fa-text-height', title:'Font Size', type:'select', items:plugin.settings.sizes, elements:'', cmd:'fontSize'},
-				foreColor: {icon:'fa fa-paint-brush', title:'Text Color', type:'colorpicker', items:plugin.settings.colors, elements:'', cmd:'foreColor'},
-				backColor: {icon:'fa fa-tint', title:'Background Color', type:'colorpicker', items:plugin.settings.colors, elements:'', cmd:'backColor'},
-				rtl: {icon:'fa fa-long-arrow-left', title:'RTL', type:'button', elements:'', cmd:'rtl'},
-				ltr: {icon:'fa fa-long-arrow-right', title:'LTR', type:'button', elements:'', cmd:'ltr'},
-				heading: {icon:'fa fa-header', title:'Heading', type:'select', items:plugin.settings.heading, elements:'', cmd:'heading'},
-				paragraph: {icon:'fa fa-paragraph', title:'Paragraph', type:'button', elements:'', cmd:'insertparagraph'},
-				linkBreak: {icon:'fa fa-level-down', title:'Line Break', type:'button', elements:'', cmd:'insertLineBreak'},
-				horizontalRule: {icon:'fa fa-minus', title:'Horizontal Rule', type:'button', elements:'', cmd:'insertHorizontalRule'},
-				orderedList: {icon:'fa fa-list-ol', title:'Orderd List', type:'button', elements:'', cmd:'insertOrderedList'},
-				unorderedList: {icon:'fa fa-list-ul', title:'Unorderd List', type:'button', elements:'', cmd:'insertUnorderedList'},
-				indent: {icon:'fa fa-indent', title:'Indent', type:'button', elements:'', cmd:'indent'},
-				outdent: {icon:'fa fa-outdent', title:'Outdent', type:'button', elements:'', cmd:'outdent'},
-				table: {icon:'fa fa-table', title:'Table', type:'button', elements:'', cmd:'insertTable'},
-				emoji: {icon:'fa fa-smile-o', title:'Emoji', type:'emojipicker', items:plugin.settings.emoji, elements:'', cmd:'insertEmoji'},
-				image: {icon:'fa fa-image', title:'Image', type:'button', elements:'', cmd:'insertImage'},
-				embed: {icon:'fa fa-plug', title:'Embed', type:'button', elements:'', cmd:'insertEmbed'},
-				media: {icon:'fa fa-video-camera', title:'Media', type:'button', elements:'', cmd:'insertMedia'},
-				youtube: {icon:'fa fa-film', title:'Youtube', type:'button', elements:'', cmd:'insertYoutube'},
-				audio: {icon:'fa fa-volume-up', title:'Audio', type:'button', elements:'', cmd:'insertAudio'},
-				link: {icon:'fa fa-link', title:'Create Link', type:'button', elements:'', cmd:'createLink'},
-				unlink: {icon:'fa fa-chain-broken', title:'Remove Link', type:'button', elements:'', cmd:'unlink'},
-				elements: {icon:'fa fa-list-alt', title:'HTML Form Elements', type:'select', items:plugin.settings.elements, elements:'', cmd:'insertElements'},
-				styles: {icon:'fa fa-text-width', title:'Styles', type:'select', items:plugin.settings.styles, elements:'', cmd:'styles'},
-				removeFormat: {icon:'fa fa-eraser', title:'Remove Formats', elements:'', cmd:'removeFormat'},
-				undo: {icon:'fa fa-rotate-left', title:'Undo', type:'button', elements:'', cmd:'undo'},
-				redo: {icon:'fa fa-rotate-right', title:'Redo', type:'button', elements:'', cmd:'redo'},
-				code: {icon:'fa fa-code', title:'Code', type:'button', elements:'', cmd:'showHTMLCode'},
-				about: {icon:'fa fa-info', title:'About', type:'button', elements:'', cmd:'about'}
-			};
+			if (plugin.settings.language && (plugin.settings.language !== 'default' || plugin.settings.language !== 'en_US')) {
+				if (window[plugin.settings.language]) {
+					$.each(window[plugin.settings.language].buttons, function(key, value) {
+						buttons[key].title = value;
+					});
+					
+					plugin.settings.toolbarDirection = window[plugin.settings.language].direction ? window[plugin.settings.language].direction : plugin.settings.toolbarDirection;
+				}
+			}
 			
 			
-			if (plugin.settings.toolbar === 'full') {
-				plugin.settings.buttons = ['fonts', 'sizes', '-', 'cut', 'copy', 'paste', 'delete', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'rtl', 'ltr', '-', 'indent', 'outdent', '-', 'foreColor', 'backColor', '-', 'heading', 'paragraph', '-' , 'horizontalRule', 'linkBreak', '-', 'orderedList', 'unorderedList', '-', 'table', '-', 'emoji', 'embed', 'youtube', 'media', 'audio', 'image', '-', 'link', 'unlink', '-', 'elements', '-', 'styles', 'removeFormat', '-', 'undo', 'redo', '-', 'code', '-', 'about'];
-			} else if (plugin.settings.toolbar === 'basic') {
-				plugin.settings.buttons = ['fonts', 'sizes', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'foreColor', 'backColor', '-', 'link', 'unlink', '-', 'removeFormat', '-', 'undo', 'redo', '-', 'about'];
-			} else if(plugin.settings.toolbar === 'editor') {
-				plugin.settings.buttons = ['fonts', 'sizes', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'rtl', 'ltr', '-', 'foreColor', 'backColor', '-', 'heading', 'paragraph', '-', 'orderedList', 'unorderedList', '-', 'table', '-', 'link', 'unlink', '-', 'removeFormat', '-', 'undo', 'redo', '-', 'about'];
+			if (plugin.settings.buttons.length < 1) {
+				if (plugin.settings.toolbar === 'full') {
+					plugin.settings.buttons = ['fonts', 'sizes', '-', 'cut', 'copy', 'paste', 'delete', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'rtl', 'ltr', '-', 'indent', 'outdent', 'leftQuote', 'rightQuote', '-', 'foreColor', 'backColor', '-', 'heading', 'paragraph', '-' , 'horizontalRule', 'linkBreak', '-', 'orderedList', 'unorderedList', '-', 'table', '-', 'emoji', 'embed', 'youtube', 'media', 'audio', 'image', '-', 'link', 'unlink', '-', 'elements', '-', 'styles', 'removeFormat', '-', 'undo', 'redo', '-', 'code', '-', 'about'];
+				} else if (plugin.settings.toolbar === 'basic') {
+					plugin.settings.buttons = ['fonts', 'sizes', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'foreColor', 'backColor', '-', 'link', 'unlink', '-', 'removeFormat', '-', 'undo', 'redo', '-', 'about'];
+				} else if(plugin.settings.toolbar === 'editor') {
+					plugin.settings.buttons = ['fonts', 'sizes', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'rtl', 'ltr', '-', 'foreColor', 'backColor', '-', 'heading', 'paragraph', '-', 'orderedList', 'unorderedList', '-', 'table', '-', 'link', 'unlink', '-', 'removeFormat', '-', 'undo', 'redo', '-', 'about'];
+				}
 			}
 			
 			
@@ -134,6 +150,7 @@
 			
 			
 			$('<div id="inlineditor-popup" readonly="true">').css({
+				'direction': plugin.settings.toolbarDirection,
 				'text-align': plugin.settings.toolbarContentAlign
 			}).appendTo('body');
 			
@@ -164,7 +181,7 @@
 							
 							$('<select id="' + value + '" class="colorpicker" title="' + (buttons[value]['title'] ? buttons[value]['title'] :'') + '" data-cmd="' + buttons[value]['cmd'] + '"></select>').appendTo('#inlineditor-popup');
 							$('select#'+value).append($('<option></option>').attr('value', '').text('---'));
-							$.each(buttons[value]['items'] ? buttons[value]['items'] : [], function(key, val){
+							$.each(buttons[value]['items'] ? buttons[value]['items'] : [], function(key, val) {
 								$('select#'+value).append($('<option title="' + ($.isArray(val) ? val[1] : val) + '" style="background-color:' + ($.isArray(val) ? val[1] : val) + '"></option>').attr('value', ($.isArray(val) ? val[1] : val)).text(($.isArray(val) ? val[0] : val)));
 							});
 						} else if (buttons[value]['type'] === 'emojipicker') {
@@ -270,7 +287,7 @@
 							break;
 							
 						case 'insertEmbed':
-							var url = prompt('Audio URL:', plugin.settings.embedPathPrefix);
+							var url = prompt('Embed/Object URL:', plugin.settings.embedPathPrefix);
 							if (url && url.trim()) {
 								var embed = '<embed src="' + url.trim() + '">';
 								document.execCommand('insertHTML', false, embed);
@@ -288,8 +305,17 @@
 						case 'showHTMLCode':
 							var codeDlg = window.open('', 'codeDlg', 'status=1,width=640,height=480,scrollbars=yes,resizable=yes,top=50,left=50');
 							codeDlg.document.title = 'inlineditor - Code View';
-
 							codeDlg.document.write('<xmp>' + $(el).html().trim() + '</xmp>');
+							break;
+							
+						case 'leftQuote':
+							var str = getSelectionText();
+							document.execCommand('insertHTML', false, '<p style="border-left:5px silver solid; padding:10px; margin:10px">' + str + '</p>');
+							break;
+							
+						case 'rightQuote':
+							var str = getSelectionText();
+							document.execCommand('insertHTML', false, '<p style="border-right:5px silver solid; padding:10px; margin:10px">' + str + '</p>');
 							break;
 							
 						case 'about':
@@ -393,7 +419,7 @@
 				} else if (plugin.settings.position === 'bottom') {
 					$('body').css('padding-bottom', $('#inlineditor-popup').height() + 5);
 				}
-			}
+			}			
         };
 		
 		
@@ -467,7 +493,10 @@
 		};
 		
         init();
-
+		
+		
+		
+		return plugin;
     };
 
 })(jQuery);

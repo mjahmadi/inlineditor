@@ -17,6 +17,7 @@
 	display: inline-block;
 	vertical-align: middle;
 	padding: 2px;
+	font-family: tahoma;
 }
 
 #inlineditor-popup.top {
@@ -84,7 +85,7 @@
 }
 
 #inlineditor-popup label {
-	font-size: 11px;
+	font-size: 10.5px;
 	font-weight: normal;
 }
 

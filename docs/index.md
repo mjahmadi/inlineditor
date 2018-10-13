@@ -50,14 +50,33 @@ var editor = $.inlineditor('div#container', {
 |mode  |string  |'auto'  |'inline', 'auto', 'fixed'|...|
 |position|string  |'top'  |'top', 'bottom', 'left', 'right'|...|
 |spellcheck|boolean  |false  |true, false|...|
+|toolbarDirection|string  |null  |'ltr', 'rtl'|...|
+|toolbarContentAlign|string  |'center'  |'left', 'center', 'right'|...|
+|imagePathPrefix|string  |null  ||...|
+|audioPathPrefix|string  |null  ||...|
+|mediaPathPrefix|string  |null  ||...|
+|embedPathPrefix|string  |null  ||...|
+|language|string  |null or 'default'  ||...|
+|buttons|array  ||...|
+|heading|string  ||'Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'|...|
+|styles|string  ||...|
+|fonts|array  ||...|
+|sizes|array  ||...|
+|elements|array  ||...|
+|emoji|array  ||...|
+|colors|array  ||...|
 
 
 
 ### Methods
 
 ### Events
+|Name          |Parameters      |Description |
+|:-------------|:---------------|:-----------|
+|onBeforeEdit  |jquery selector |...         |
+|onAfterEdit   |jquery selector |...         |
 
-
+----------------------------------------------
 ### Demos
 - [Mini](https://mjahmadi.github.io/inlineditor/demos/mini.html)
 - [Basic](https://mjahmadi.github.io/inlineditor/demos/basic.html)

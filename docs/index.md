@@ -45,10 +45,11 @@ var editor = $.inlineditor('div#container', {
 
 ### Options
 
-|Name  |Type    |Default |Description |
-|------|--------|--------|------------|
-|mode  |string  |'auto'  |'inline', 'auto', 'fixed'|
-|position|string  |'top'  |'top', 'bottom', 'left', 'right'|
+|Name  |Type    |Default |Valid values             |Description |
+|:-----|:-------|:-------|:------------------------|:-----------|
+|mode  |string  |'auto'  |'inline', 'auto', 'fixed'|...|
+|position|string  |'top'  |'top', 'bottom', 'left', 'right'|...|
+|spellcheck|boolean  |false  |true, false|...|
 
 
 

@@ -3,7 +3,7 @@ Inlineditor is a WYSIWYG editor for web pages. Its goal is to be powerful and si
 
 
 
-## Features
+### Features
 - Extremely lightweight
 - Multilingual
 - Configurable
@@ -20,7 +20,7 @@ Inlineditor has some very common dependencies shown below
 
 ### Usage
 
-#### Add belowe lines to your html page
+Add belowe lines to your html page
 ```
 <script type="text/javascript" src="jquery.js"></script>
 <link rel="stylesheet" type="text/css"  href="font-awesome.min.css" />
@@ -29,12 +29,12 @@ Inlineditor has some very common dependencies shown below
 <link rel="stylesheet" type="text/css"  href="dist/css/inlineditor.css" />
 ```
 
-#### HTML
+HTML:
 ```
 <div id="container"></div>
 ```
 
-#### Javascript
+Javascript:
 ```
 var editor = $.inlineditor('div#container', {
   /*options*/
@@ -45,28 +45,10 @@ var editor = $.inlineditor('div#container', {
 
 ### Options
 
-```
-mode: 'fixed',
-position: 'top',
-spellcheck: true,
-toolbarDirection: 'ltr',
-toolbarContentAlign: 'center',
-imagePathPrefix: '',
-audioPathPrefix: '',
-mediaPathPrefix: '',
-embedPathPrefix: '',
-language: '',
-buttons: [],
-toolbar: 'full',
-heading: ['Normal', ['Heading1', 'h1'], ['Heading2', 'h2'], ['Heading3', 'h3'], ['Heading4', 'h4'], ['Heading5', 'h5'], ['Heading6', 'h6']],
-styles: [],
-fonts: ['Arial', 'Helvetica', 'Times', 'Courier', 'Impact', 'Shabnam', 'B Nazanin', 'BMitra', 'BMitraBold', 'BRoya', 'BTabassom', 'BTitr', 'BTitrTGE', 'Yekan', 'BTraffic', 'BNasim', 'Tahoma'],
-sizes: [['xx-small', '1'], ['x-small', '2'], ['small', '3'], ['normal', '4'], ['large', '5'], ['x-large', '6'], ['xx-large', '7']],
-elements: ['div', 'p', 'form', 'label', ['input', 'text'], 'password', 'textarea', 'select', 'checkbox', 'radio', 'submit', 'reset', 'button'],
-emoji: [
-[128513, 128591], [9986, 10160], [128640, 128704]
-],
-```
+Option|Default|Description
+--------------------------
+mode|'auto'|'inline', 'auto', 'fixed'
+
 
 
 ### Demos

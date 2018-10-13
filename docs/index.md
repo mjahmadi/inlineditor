@@ -21,7 +21,7 @@ Inlineditor has some very common dependencies shown below
 ### Usage
 
 Add belowe lines to your html page
-```
+```html
 <script type="text/javascript" src="jquery.js"></script>
 <link rel="stylesheet" type="text/css"  href="font-awesome.min.css" />
 
@@ -30,19 +30,18 @@ Add belowe lines to your html page
 ```
 
 HTML:
-```
+```html
 <div id="container"></div>
 ```
 
 Javascript:
-```
+```javascript
 var editor = $.inlineditor('div#container', {
   /*options*/
   ...
 });
 ```
 
-<br />
 <br />
 
 ----------------------------------------------

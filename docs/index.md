@@ -70,6 +70,7 @@ emoji: [
 
 
 ### Demos
+- [Mini](https://mjahmadi.github.io/inlineditor/demos/mini.html)
 - [Basic](https://mjahmadi.github.io/inlineditor/demos/basic.html)
 - [Editors](https://mjahmadi.github.io/inlineditor/demos/editors.html)
 - [Full featured](https://mjahmadi.github.io/inlineditor/demos/full.html)

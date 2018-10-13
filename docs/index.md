@@ -41,8 +41,10 @@ var editor = $.inlineditor('div#container', {
   ...
 });
 ```
+
 <br />
 <br />
+
 ----------------------------------------------
 
 ### Options
@@ -70,7 +72,9 @@ The options is defined in jQuery.fn.inlineditor.defaults.
 |colors|array  | |...|
 
 <br />
+
 ----------------------------------------------
+
 <br />
 
 ### Methods
@@ -83,7 +87,9 @@ The events(callback functions) is defined in jQuery.fn.inlineditor.defaults also
 
 
 <br />
+
 ----------------------------------------------
+
 <br />
 
 
@@ -97,7 +103,9 @@ The calling method syntax: $('selector').inlineditor('method', parameter);
 
 
 <br />
+
 ----------------------------------------------
+
 <br />
 
 ### Demos

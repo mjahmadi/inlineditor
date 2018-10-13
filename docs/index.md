@@ -44,6 +44,7 @@ var editor = $.inlineditor('div#container', {
 
 
 ### Options
+The options is defined in jQuery.fn.inlineditor.defaults.
 
 |Name  |Type    |Default |Valid values             |Description |
 |:-----|:-------|:-------|:------------------------|:-----------|
@@ -52,29 +53,40 @@ var editor = $.inlineditor('div#container', {
 |spellcheck|boolean  |false  |true, false|...|
 |toolbarDirection|string  |null  |'ltr', 'rtl'|...|
 |toolbarContentAlign|string  |'center'  |'left', 'center', 'right'|...|
-|imagePathPrefix|string  |null  ||...|
-|audioPathPrefix|string  |null  ||...|
-|mediaPathPrefix|string  |null  ||...|
-|embedPathPrefix|string  |null  ||...|
-|language|string  |null or 'default'  ||...|
-|buttons|array  ||...|
-|heading|string  ||'Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'|...|
-|styles|string  ||...|
-|fonts|array  ||...|
-|sizes|array  ||...|
-|elements|array  ||...|
-|emoji|array  ||...|
-|colors|array  ||...|
+|imagePathPrefix|string  |null  | |...|
+|audioPathPrefix|string  |null  | |...|
+|mediaPathPrefix|string  |null  | |...|
+|embedPathPrefix|string  |null  | |...|
+|language|string  |null or 'default'  | |...|
+|buttons|array  | |...|
+|heading|string  | |'Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'|...|
+|styles|string  | |...|
+|fonts|array  | |...|
+|sizes|array  | |...|
+|elements|array  | |...|
+|emoji|array  | |...|
+|colors|array  | |...|
 
-
+----------------------------------------------
 
 ### Methods
-
-### Events
+The events(callback functions) is defined in jQuery.fn.inlineditor.defaults also.
 |Name          |Parameters      |Description |
 |:-------------|:---------------|:-----------|
 |onBeforeEdit  |jquery selector |...         |
 |onAfterEdit   |jquery selector |...         |
+
+
+
+
+----------------------------------------------
+
+### Events
+The calling method syntax: $('selector').inlineditor('method', parameter);
+|Name          |Parameters      |Description |
+|:-------------|:---------------|:-----------|
+|  | |...         |
+|  | |...         |
 
 ----------------------------------------------
 ### Demos

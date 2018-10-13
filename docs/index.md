@@ -45,26 +45,16 @@ var editor = $.inlineditor('div#container', {
 
 ### Options
 
-|Name  |Default |Description |
-|------|:------:|-----------:|
-|mode  |'auto'  |'inline', 'auto', 'fixed'|
+|Name  |Type    |Default |Description |
+|------|--------|--------|------------|
+|mode  |string  |'auto'  |'inline', 'auto', 'fixed'|
+|position|string  |'top'  |'top', 'bottom', 'left', 'right'|
 
 
 
 ### Methods
 
-|Name  |Default |Description |
-|------|:------:|-----------:|
-|mode  |'auto'  |'inline', 'auto', 'fixed'|
-
-
-
 ### Events
-
-|Name  |Default |Description |
-|------|:------:|-----------:|
-|mode  |'auto'  |'inline', 'auto', 'fixed'|
-
 
 
 ### Demos

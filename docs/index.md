@@ -45,9 +45,9 @@ var editor = $.inlineditor('div#container', {
 
 ### Options
 
-Option|Default|Description
+|Option|Default|Description|
 --------------------------
-mode|'auto'|'inline', 'auto', 'fixed'
+|mode|'auto'|'inline', 'auto', 'fixed'|
 
 
 

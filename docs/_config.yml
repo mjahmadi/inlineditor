@@ -2,4 +2,4 @@ theme: jekyll-theme-minimal
 title: "inlineditor"
 description: "Full featured rich text editing for web pages."
 show_downloads: "true"
-logo: assets/img/logo.png
+logo: "assets/img/logo.png"

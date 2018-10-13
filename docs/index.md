@@ -47,11 +47,11 @@ var editor = $.inlineditor('div#container', {
 ---
 
 ### Options
-The options is defined in jQuery.fn.inlineditor.defaults.
+The options is defined in jQuery.fn.inlineditor.defaults
 
 |Name                  |Type      |Default   |Valid values                 |Description      |
 |:---------------------|:---------|:---------|:----------------------------|:----------------|
-|mode                  |string    |'auto'  |'inline', 'auto', 'fixed'|...|
+|mode                  |string    |'auto'    |'inline', 'auto', 'fixed'|...|
 |position|string       |'top'     |'top', 'bottom', 'left', 'right'|...|
 |spellcheck|boolean    |false     |true, false|...|
 |toolbarDirection      |string    |null  |'ltr', 'rtl'|...|
@@ -61,19 +61,14 @@ The options is defined in jQuery.fn.inlineditor.defaults.
 |mediaPathPrefix       |string    |null  | |...|
 |embedPathPrefix       |string    |null  | |...|
 |language              |string    |null or 'default'  | |...|
-|buttons               |array     |null  | bold, italic, justifyLeft, justifyCenter, justifyRight, justifyFull, cut,
-                                           copy, paste, delete, underline, strikethrough, subscript, superscript,
-			                                     fonts, sizes, foreColor, backColor, rtl, ltr, heading, paragraph, linkBreak,
-                                           horizontalRule, orderedList, unorderedList, indent, outdent,	leftQuote,
-                                           rightQuote, table, emoji, image, embed, media, youtube, audio, link, unlink,
-                                           elements, styles, removeFormat, undo, redo, code, about|...|
-|heading|string  | |'Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'|...|
-|styles|string  | |...|
-|fonts|array  | |...|
-|sizes|array  | |...|
-|elements|array  | |...|
-|emoji|array  | |...|
-|colors|array  | |...|
+|buttons               |array     |null  | |...|
+|heading               |array     |'Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'|...|
+|styles                |string    | |...|
+|fonts                 |array     | |...|
+|sizes                 |array     | |...|
+|elements              |array     | |...|
+|emoji                 |array     | |...|
+|colors                |array     | |...|
 
 <br />
 

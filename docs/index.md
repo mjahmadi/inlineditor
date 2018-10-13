@@ -3,7 +3,7 @@ Inlineditor is a WYSIWYG editor for web pages. Its goal is to be powerful and si
 
 
 
-## features
+## Features
 - Extremely lightweight
 - Multilingual
 - Configurable
@@ -47,7 +47,6 @@ var editor = $.inlineditor('div#container', {
 
 ```
 mode: 'fixed',
-
 position: 'top',
 spellcheck: true,
 toolbarDirection: 'ltr',

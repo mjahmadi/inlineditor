@@ -9,7 +9,8 @@ Inlineditor is a WYSIWYG editor for web pages. Its goal is to be powerful and si
 - Configurable
 - Themes
 
-
+<ENTER>
+<ENTER>
 
 ### Dependencies
 Inlineditor has some very common dependencies shown below

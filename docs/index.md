@@ -8,7 +8,7 @@ Inlineditor is a WYSIWYG editor for web pages. Its goal is to be powerful, simpl
 - Extremely lightweight
 - Multilingual
 - Configurable
-- 45 built-in plugin
+- More tahn 40 built-in plugin
 - Minimum dependencies
 - Themable
 
@@ -83,26 +83,26 @@ The options is defined in jQuery.fn.inlineditor.defaults
 ### Plugins
 The plugins is defined in jQuery.fn.inlineditor.defaults
 
-|Name                       |Description                                          |
-|:--------------------------|:----------------------------------------------------|
-|bold                       |...                                                  |
+|Name                       |Description                                                       |
+|:--------------------------|:-----------------------------------------------------------------|
+|bold                       |Toggles bold on/off for the selection or at the insertion point.  |
 |italic                     |...                                                  |
 |justifyLeft                |...                                                  |
 |justifyRight               |...                                                  |
 |justifyCenter              |...                                                  |
 |justifyFull                |...                                                  |
-|cut                        |...                                                  |
-|copy                       |...                                                  |
+|cut                        |Removes the current selection and copies it to the clipboard.     |
+|copy                       |Copies the current selection to the clipboard.                    |
 |paste                      |...                                                  |
-|delete                     |...                                                  |
+|delete                     |Deletes the current selection.                       |
 |underline                  |...                                                  |
 |strikethrough              |...                                                  |
 |subscript                  |...                                                  |
 |superscript                |...                                                  |
-|fonts                      |...                                                  |
-|sizes                      |...                                                  |
+|fonts                      |Changes the font name for the selection or at the insertion point.  |
+|sizes                      |Changes the font size for the selection or at the insertion point.  |
 |foreColor                  |...                                                  |
-|backColor                  |...                                                  |
+|backColor                  |Changes the document background color.               |
 |direction                  |...                                                  |
 |heading                    |...                                                  |
 |paragraph                  |...                                                  |

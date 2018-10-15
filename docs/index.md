@@ -138,7 +138,7 @@ The commands is defined in $.fn.inlineditor.commands
 
 
 ### Methods
-The events(callback functions) is defined in $.fn.inlineditor also.
+The calling method syntax: $.fn.inlineditor('method', parameters);
 
 |Name          |Parameters      |Description |
 |:-------------|:---------------|:-----------|
@@ -149,7 +149,7 @@ The events(callback functions) is defined in $.fn.inlineditor also.
 <br />
 
 ### Events
-The calling method syntax: $.fn.inlineditor('method', parameters);
+The events(callback functions) is defined in $.fn.inlineditor.defaults also.
 
 |Name          |Parameters      |Description |
 |:-------------|:---------------|:-----------|

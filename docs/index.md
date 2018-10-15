@@ -86,49 +86,49 @@ The plugins is defined in jQuery.fn.inlineditor.defaults
 |Name                       |Description                                                       |
 |:--------------------------|:-----------------------------------------------------------------|
 |bold                       |Toggles bold on/off for the selection or at the insertion point.  |
-|italic                     |...                                                  |
-|justifyLeft                |...                                                  |
-|justifyRight               |...                                                  |
-|justifyCenter              |...                                                  |
-|justifyFull                |...                                                  |
+|italic                     |Toggles italics on/off for the selection or at the insertion point.   |
+|justifyLeft                |Justifies the selection or insertion point to the left.                           |
+|justifyRight               |Right-justifies the selection or the insertion point.                             |
+|justifyCenter              |Centers the selection or insertion point.                                         |
+|justifyFull                |Justifies the selection or insertion point.                                       |
 |cut                        |Removes the current selection and copies it to the clipboard.     |
 |copy                       |Copies the current selection to the clipboard.                    |
-|paste                      |...                                                  |
+|paste                      |Pastes the clipboard contents at the insertion point (replaces current selection).            |
 |delete                     |Deletes the current selection.                       |
-|underline                  |...                                                  |
-|strikethrough              |...                                                  |
-|subscript                  |...                                                  |
-|superscript                |...                                                  |
+|underline                  |Toggles underline on/off for the selection or at the insertion point.             |
+|strikethrough              |Toggles strikethrough on/off for the selection or at the insertion point.         |
+|subscript                  |Toggles subscript on/off for the selection or at the insertion point.             |
+|superscript                |Toggles superscript on/off for the selection or at the insertion point.           |
 |fonts                      |Changes the font name for the selection or at the insertion point.  |
 |sizes                      |Changes the font size for the selection or at the insertion point.  |
-|foreColor                  |...                                                  |
+|foreColor                  |Changes a font color for the selection or at the insertion point.   |
 |backColor                  |Changes the document background color.               |
-|direction                  |...                                                  |
-|heading                    |...                                                  |
-|paragraph                  |...                                                  |
-|linkBreak                  |...                                                  |
-|horizontalRule             |...                                                  |
-|orderedList                |...                                                  |
-|unorderedList              |...                                                  |
-|indent                     |...                                                  |
-|outdent                    |...                                                  |
-|leftQuote                  |...                                                  |
-|rightQuote                 |...                                                  |
-|table                      |...                                                  |
-|emoji                      |...                                                  |
-|image                      |...                                                  |
-|embed                      |...                                                  |
-|media                      |...                                                  |
-|youtube                    |...                                                  |
-|audio                      |...                                                  |
-|link                       |...                                                  |
-|unlink                     |...                                                  |
-|elements                   |...                                                  |
-|styles                     |...                                                  |
-|removeFormat               |...                                                  |
-|undo                       |...                                                  |
-|redo                       |...                                                  |
-|code                       |...                                                  |
+|direction                  |Changes the paragraph writing direction to 'ltr' or 'rtl'.                                    |
+|heading                    |Adds a heading element around a selection or insertion point line.  |
+|paragraph                  |Inserts a paragraph around the selection or the current line.                                 |
+|linkBreak                  |Inserts a ```<br/>``` at the insertion point (deletes selection).                             |
+|horizontalRule             |Inserts a <hr> element at the insertion point, or replaces the selection with it.  |
+|orderedList                |Creates a numbered ordered list for the selection or at the insertion point.       |
+|unorderedList              |Creates a bulleted unordered list for the selection or at the insertion point.     |
+|indent                     |Indents the line containing the selection or insertion point.       |
+|outdent                    |Outdents the line containing the selection or insertion point.                     |
+|leftQuote                  |Adds an HTML ```<blockquote>```` and wrap any containing block element around the selection.  |
+|rightQuote                 |Adds an HTML ```<blockquote>```` and wrap any containing block element around the selection.  |
+|table                      |Inserts a table at the insertion point (deletes selection) with given dimension.              |
+|emoji                      |Inserts a native browser emoji at the insertion point (deletes selection).                    |
+|image                      |Inserts an image at the insertion point (deletes selection). Requires a image URL string.     |
+|embed                      |Inserts a embed object at the insertion point (deletes selection).                        |
+|media                      |Inserts a video box at the insertion point (deletes selection).                           |
+|youtube                    |Inserts a Youtube video box at the insertion point (deletes selection).                   |
+|audio                      |Inserts a audio box at the insertion point (deletes selection).                           |
+|link                       |Creates an hyperlink from the selection, but only if there is a selection.                |
+|unlink                     |Removes the anchor element from a selected hyperlink.                              |
+|elements                   |Inserts a selected element at the insertion point (deletes selection).                         |
+|styles                     |Adds a selected pre user defined css style to the selection.                                   |
+|removeFormat               |Removes all formatting from the current selection.                                 |
+|undo                       |Undoes the last executed command.                                                  |
+|redo                       |Redoes the previous undo command.                                                  |
+|code                       |Will shows HTML code of editing area in a read only window.                      |
 
 
 <br />

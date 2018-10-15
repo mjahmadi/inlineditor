@@ -1,4 +1,4 @@
-theme: jekyll-theme-minimal
+theme: jekyll-theme-slate
 title: "inlineditor"
 description: "Full featured rich text editing for web pages."
 show_downloads: "true"

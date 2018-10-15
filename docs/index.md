@@ -131,19 +131,19 @@ The commands is defined in $.fn.inlineditor.commands
 |redo                       |Redoes the previous undo command.                                                             |
 |code                       |Will shows HTML code of editing area in a read only window.                                   |
 
-
 <br />
 <br />
-
-
 
 ### Methods
 The calling method syntax: $.fn.inlineditor('method', parameters);
 
 |Name          |Parameters      |Description |
 |:-------------|:---------------|:-----------|
-|getValue      |                |...         |
+|getOption     |string          |...         |
+|setOption     |string, string  |...         |
+|getValue      |void            |...         |
 |setValue      |string          |...         |
+|execCommand   |string, string  |...         |
 
 <br />
 <br />
@@ -153,8 +153,8 @@ The events(callback functions) is defined in $.fn.inlineditor.defaults also.
 
 |Name          |Parameters      |Description |
 |:-------------|:---------------|:-----------|
-|onBeforeEdit  |jquery selector |...         |
-|onAfterEdit   |jquery selector |...         |
+|onBeforeEdit  |object          |...         |
+|onAfterEdit   |object          |...         |
 
 <br />
 <br />

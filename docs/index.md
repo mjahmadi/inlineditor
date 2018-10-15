@@ -28,8 +28,8 @@ Inlineditor has some very common dependencies shown below
 
 Add belowe lines to your html page
 ```html
-<script type="text/javascript" src="jquery.js"></script>
-<link rel="stylesheet" type="text/css"  href="font-awesome.min.css" />
+<script type="text/javascript" src="lib/jquery.js"></script>
+<link rel="stylesheet" type="text/css"  href="lib/font-awesome/css/font-awesome.min.css" />
 
 <script type="text/javascript" src="dist/js/inlineditor.js"></script>
 <link rel="stylesheet" type="text/css"  href="dist/css/inlineditor.css" />
@@ -54,30 +54,32 @@ var editor = $.fn.inlineditor('div#container', {
 ### Options
 The options is defined in $.fn.inlineditor.defaults
 
-|Name                     |Type      |Default   |Description                                                                         |
-|:------------------------|:---------|:---------|:-----------------------------------------------------------------------------------|
-|mode                     |string    |'auto'    |'inline', 'auto', 'fixed'                                                           |
-|position                 |string    |'top'     |'top', 'bottom', 'left', 'right'                                                    |
-|spellcheck               |boolean   |false     |true, false                                                                         |
-|toolbarDirection         |string    |null      |'ltr', 'rtl'                                                                        |
-|toolbarContentAlign      |string    |'center'  |'left', 'center', 'right'                                                           |
-|imagePathPrefix          |string    |null      |                                                                                    |
-|audioPathPrefix          |string    |null      |                                                                                    |
-|mediaPathPrefix          |string    |null      |                                                                                    |
-|embedPathPrefix          |string    |null      |                                                                                    |
-|language                 |string    |null or 'default' |                                                                            |
-|buttons                  |array     |null              |                                                                            |
-|heading                  |array     |'Normal', 'H1', ..., 'H6'|                                                                     |
-|styles                   |string    |null                     |                                                                     |
-|fonts                    |array     |          |                                                                     |
-|sizes                    |array     |          |                                                                     |
-|elements                 |array     |          |                                                                     |
-|emoji                    |array     |          |                                                                     |
-|colors                   |array     |          |                                                                     |
-|absolutePosition         |boolean   |false   |Enables or disables the grabber that allows elements to be moved around.              |
-|tableEditing             |boolean   |false   |Enables or disables the table row/column insertion and deletion controls.             |
-|objectResizing           |boolean   |false   |Enables or disables the resize handles on images, tables and other resizable objects. |
-|generateStyle            |boolean   |false   |True generates style attributes in markup, false generates presentational elements.   |
+|Name                |Type    |Default |Description                                                                           |
+|:-------------------|:-------|:-------|:-------------------------------------------------------------------------------------|
+|mode                |string  |'auto'  |'auto', 'inline', 'fixed'                                                             |
+|position            |string  |'top'   |'top', 'bottom', 'left', 'right'                                                      |
+|spellcheck          |boolean |false   |true, false                                                                           |
+|toolbarDirection    |string  |'ltr'   |'ltr', 'rtl'                                                                          |
+|toolbarContentAlign |string  |'center'|'left', 'center', 'right'                                                             |
+|imagePathPrefix     |string  |null    |                                                                                      |
+|audioPathPrefix     |string  |null    |                                                                                      |
+|mediaPathPrefix     |string  |null    |                                                                                      |
+|embedPathPrefix     |string  |null    |                                                                                      |
+|language            |string  |null or 'default' |                                                                            |
+|buttons             |array   |null    |                                                                                      |
+|heading             |array   |'Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'|                                                  |
+|styles              |string  |null    |                                                                                      |
+|fonts               |array   |        |                                                                                      |
+|additionalFonts     |array   |        |                                                                                      |
+|sizes               |array   |        |                                                                                      |
+|elements            |array   |        |                                                                                      |
+|emoji               |array   |        |                                                                                      |
+|colors              |array   |        |                                                                                      |
+|absolutePosition    |boolean |false   |Enables or disables the grabber that allows elements to be moved around.              |
+|tableEditing        |boolean |false   |Enables or disables the table row/column insertion and deletion controls.             |
+|objectResizing      |boolean |false   |Enables or disables the resize handles on images, tables and other resizable objects. |
+|generateStyle       |boolean |false   |True generates style attributes in markup, false generates presentational elements.   |
+|fadeinOnHover       |boolean |false   |true, false                                                                           |
 
 <br />
 <br />

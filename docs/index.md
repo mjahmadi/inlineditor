@@ -56,8 +56,8 @@ The options is defined in jQuery.fn.inlineditor.defaults
 |Name                     |Type      |Default   |Description                                                                         |
 |:------------------------|:---------|:---------|:-----------------------------------------------------------------------------------|
 |mode                     |string    |'auto'    |'inline', 'auto', 'fixed'                                                           |
-|position|string          |string    |'top'     |'top', 'bottom', 'left', 'right'                                                    |
-|spellcheck|boolean       |boolean   |false     |true, false                                                                         |
+|position                 |string    |'top'     |'top', 'bottom', 'left', 'right'                                                    |
+|spellcheck               |boolean   |false     |true, false                                                                         |
 |toolbarDirection         |string    |null      |'ltr', 'rtl'                                                                        |
 |toolbarContentAlign      |string    |'center'  |'left', 'center', 'right'                                                           |
 |imagePathPrefix          |string    |null      |                                                                                    |
@@ -68,11 +68,11 @@ The options is defined in jQuery.fn.inlineditor.defaults
 |buttons                  |array     |null              |                                                                            |
 |heading                  |array     |'Normal', 'H1', ..., 'H6'|                                                                     |
 |styles                   |string    |null                     |                                                                     |
-|fonts                    |array     |                         |                                                                     |
-|sizes                    |array     |                         |                                                                     |
-|elements                 |array     |                         |                                                                     |
-|emoji                    |array     |                         |                                                                     |
-|colors                   |array     |                         |                                                                     |
+|fonts                    |array     |          |                                                                     |
+|sizes                    |array     |          |                                                                     |
+|elements                 |array     |          |                                                                     |
+|emoji                    |array     |          |                                                                     |
+|colors                   |array     |          |                                                                     |
 |absolutePosition         |boolean   |false   |Enables or disables the grabber that allows elements to be moved around.              |
 |tableEditing             |boolean   |false   |Enables or disables the table row/column insertion and deletion controls.             |
 |objectResizing           |boolean   |false   |Enables or disables the resize handles on images, tables and other resizable objects. |

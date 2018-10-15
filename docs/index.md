@@ -5,11 +5,12 @@ Inlineditor is a WYSIWYG editor for web pages. Its goal is to be powerful, simpl
 <br />
 
 ### Features
-- Extremely lightweight
-- Multilingual
+- Extremely lightweight and easy to use
+- Minimum dependencies
 - Configurable
 - More than 40 built-in commands
-- Minimum dependencies
+- Multiple instances
+- Multilingual and RTL support
 - Themable
 
 <br />
@@ -17,8 +18,8 @@ Inlineditor is a WYSIWYG editor for web pages. Its goal is to be powerful, simpl
 
 ### Dependencies
 Inlineditor has some very common dependencies shown below
-- jquery
-- font-awesome
+- jquery(https://jquery.com/)
+- font-awesome(https://fontawesome.com/)
 
 <br />
 <br />

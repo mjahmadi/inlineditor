@@ -48,8 +48,6 @@ var editor = $.inlineditor('div#container', {
 ```
 
 <br />
-
----
 <br />
 
 ### Options

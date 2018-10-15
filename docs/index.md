@@ -8,7 +8,7 @@ Inlineditor is a WYSIWYG editor for web pages. Its goal is to be powerful, simpl
 - Extremely lightweight
 - Multilingual
 - Configurable
-- More tahn 40 built-in plugin
+- More than 40 built-in plugin
 - Minimum dependencies
 - Themable
 

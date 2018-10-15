@@ -8,7 +8,7 @@ Inlineditor is a WYSIWYG editor for web pages. Its goal is to be powerful, simpl
 - Extremely lightweight
 - Multilingual
 - Configurable
-- More than 40 built-in plugin
+- More than 40 built-in commands
 - Minimum dependencies
 - Themable
 
@@ -51,7 +51,7 @@ var editor = $.inlineditor('div#container', {
 <br />
 
 ### Options
-The options is defined in jQuery.fn.inlineditor.defaults
+The options is defined in $.fn.inlineditor.defaults
 
 |Name                     |Type      |Default   |Description                                                                         |
 |:------------------------|:---------|:---------|:-----------------------------------------------------------------------------------|
@@ -81,8 +81,8 @@ The options is defined in jQuery.fn.inlineditor.defaults
 <br />
 <br />
 
-### Plugins
-The plugins is defined in jQuery.fn.inlineditor.defaults
+### Commands
+The commands is defined in $.fn.inlineditor.defaults
 
 |Name                       |Description                                                                                   |
 |:--------------------------|:---------------------------------------------------------------------------------------------|
@@ -138,7 +138,7 @@ The plugins is defined in jQuery.fn.inlineditor.defaults
 
 
 ### Methods
-The events(callback functions) is defined in jQuery.fn.inlineditor.defaults also.
+The events(callback functions) is defined in $.fn.inlineditor also.
 
 |Name          |Parameters      |Description |
 |:-------------|:---------------|:-----------|
@@ -149,7 +149,7 @@ The events(callback functions) is defined in jQuery.fn.inlineditor.defaults also
 <br />
 
 ### Events
-The calling method syntax: $('selector').inlineditor('method', parameter);
+The calling method syntax: $.fn.inlineditor('method', parameters);
 
 |Name          |Parameters      |Description |
 |:-------------|:---------------|:-----------|
@@ -163,21 +163,21 @@ The calling method syntax: $('selector').inlineditor('method', parameter);
 
 ### Browser compatibility
 
-|Name                  |Version         |Description |
-|:---------------------|:--------------:|:-----------|
-|Chrome                |                |...         |
-|Edge                  |                |...         |
-|Firefox               |41              |...         |
-|Edge                  |                |...         |
-|Internet Explorer     |9               |...         |
-|Opera                 |29              |...         |
-|Safari                |10              |...         |
-|Android webview       |                |...         |
-|Chrome for Android    |                |...         |
-|Edge Mobile           |                |...         |
-|Firefox for Android   |41              |...         |
-|Opera for Android     |29              |...         |
-|iOS Safari            |10              |...         |
+|Name                  |Version         |Description                                                       |
+|:---------------------|:--------------:|:-----------------------------------------------------------------|
+|Chrome                |                |...                                                               |
+|Edge                  |                |...                                                               |
+|Firefox               |<= 41           |copy, cut commands will not work correctly in older versions.     |
+|Edge                  |                |...                                                               |
+|Internet Explorer     |>= 9            |Very limited support.                                             |
+|Opera                 |>= 29           |copy, cut commands will not work correctly in older versions.     |
+|Safari                |>= 10           |copy, cut commands will not work correctly in older versions.     |
+|Android webview       |                |...                                                               |
+|Chrome for Android    |                |...                                                               |
+|Edge Mobile           |                |...                                                               |
+|Firefox for Android   |>= 41           |copy, cut commands will not work correctly in older versions.     |
+|Opera for Android     |>= 29           |copy, cut commands will not work correctly in older versions.     |
+|iOS Safari            |>= 10           |copy, cut commands will not work correctly in older versions.     |
 
 <br />
 <br />

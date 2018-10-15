@@ -165,9 +165,9 @@ The calling method syntax: $('selector').inlineditor('method', parameter);
 
 |Name                  |Version         |Description |
 |:---------------------|:--------------:|:-----------|
-|Chrome                |41              |...         |
+|Chrome                |                |...         |
 |Edge                  |                |...         |
-|Firefox               |                |...         |
+|Firefox               |41              |...         |
 |Edge                  |                |...         |
 |Internet Explorer     |9               |...         |
 |Opera                 |29              |...         |

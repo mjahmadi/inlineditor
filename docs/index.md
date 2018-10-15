@@ -69,12 +69,12 @@ The options is defined in $.fn.inlineditor.defaults
 |buttons             |array   |null    |                                                                                      |
 |heading             |array   |'Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'|                                                  |
 |styles              |string  |null    |                                                                                      |
-|fonts               |array   |        |                                                                                      |
-|additionalFonts     |array   |        |                                                                                      |
-|sizes               |array   |        |                                                                                      |
+|fonts               |array   |'Arial', 'Helvetica', 'Times', 'Courier', 'Impact', 'Tahoma'|                                  |
+|additionalFonts     |array   |null    |                                                                                      |
+|sizes               |array   |'xx-small', 'x-small', 'small', 'normal', 'large', 'x-large', 'xx-large'                       |
 |elements            |array   |        |                                                                                      |
 |emoji               |array   |        |                                                                                      |
-|colors              |array   |        |                                                                                      |
+|colors              |array   |140 named colors |[Color Names Supported by All Browsers](https://www.w3schools.com/colors/colors_names.asp)                                    |
 |absolutePosition    |boolean |false   |Enables or disables the grabber that allows elements to be moved around.              |
 |tableEditing        |boolean |false   |Enables or disables the table row/column insertion and deletion controls.             |
 |objectResizing      |boolean |false   |Enables or disables the resize handles on images, tables and other resizable objects. |

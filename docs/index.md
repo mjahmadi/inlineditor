@@ -44,7 +44,6 @@ Javascript:
 ```javascript
 var editor = $.fn.inlineditor('div#container', {
   /*options*/
-  ...
 });
 ```
 
@@ -65,6 +64,7 @@ The options is defined in $.fn.inlineditor.defaults
 |audioPathPrefix     |string  |null    |                                                                                      |
 |mediaPathPrefix     |string  |null    |                                                                                      |
 |embedPathPrefix     |string  |null    |                                                                                      |
+|pathPrefix          |string  |null    |                                                                                      |
 |language            |string  |null or 'default' |                                                                            |
 |buttons             |array   |null    |                                                                                      |
 |heading             |array   |'Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'|                                                  |

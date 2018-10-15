@@ -41,7 +41,7 @@ HTML:
 
 Javascript:
 ```javascript
-var editor = $.inlineditor('div#container', {
+var editor = $.fn.inlineditor('div#container', {
   /*options*/
   ...
 });
@@ -82,7 +82,7 @@ The options is defined in $.fn.inlineditor.defaults
 <br />
 
 ### Commands
-The commands is defined in $.fn.inlineditor.defaults
+The commands is defined in $.fn.inlineditor.commands
 
 |Name                       |Description                                                                                   |
 |:--------------------------|:---------------------------------------------------------------------------------------------|
@@ -167,7 +167,7 @@ The calling method syntax: $.fn.inlineditor('method', parameters);
 |:---------------------|:--------------:|:-----------------------------------------------------------------|
 |Chrome                |                |...                                                               |
 |Edge                  |                |...                                                               |
-|Firefox               |<= 41           |copy, cut commands will not work correctly in older versions.     |
+|Firefox               |>= 41           |copy, cut commands will not work correctly in older versions.     |
 |Edge                  |                |...                                                               |
 |Internet Explorer     |>= 9            |Very limited support.                                             |
 |Opera                 |>= 29           |copy, cut commands will not work correctly in older versions.     |

@@ -48,9 +48,9 @@ var editor = $.inlineditor('div#container', {
 ```
 
 <br />
-<br />
 
 ---
+<br />
 
 ### Options
 The options is defined in jQuery.fn.inlineditor.defaults
@@ -76,10 +76,65 @@ The options is defined in jQuery.fn.inlineditor.defaults
 |emoji                 |array     | |...|
 |colors                |array     | |...|
 
----
+<br />
+<br />
+
+
+### Plugins
+The plugins is defined in jQuery.fn.inlineditor.defaults
+
+|Name                       |Description                                          |
+|:--------------------------|:----------------------------------------------------|
+|bold                       |...                                                  |
+|italic                     |...                                                  |
+|justifyLeft                |...                                                  |
+|justifyRight               |...                                                  |
+|justifyCenter              |...                                                  |
+|justifyFull                |...                                                  |
+|cut                        |...                                                  |
+|copy                       |...                                                  |
+|paste                      |...                                                  |
+|delete                     |...                                                  |
+|underline                  |...                                                  |
+|strikethrough              |...                                                  |
+|subscript                  |...                                                  |
+|superscript                |...                                                  |
+|fonts                      |...                                                  |
+|sizes                      |...                                                  |
+|foreColor                  |...                                                  |
+|backColor                  |...                                                  |
+|direction                  |...                                                  |
+|heading                    |...                                                  |
+|paragraph                  |...                                                  |
+|linkBreak                  |...                                                  |
+|horizontalRule             |...                                                  |
+|orderedList                |...                                                  |
+|unorderedList              |...                                                  |
+|indent                     |...                                                  |
+|outdent                    |...                                                  |
+|leftQuote                  |...                                                  |
+|rightQuote                 |...                                                  |
+|table                      |...                                                  |
+|emoji                      |...                                                  |
+|image                      |...                                                  |
+|embed                      |...                                                  |
+|media                      |...                                                  |
+|youtube                    |...                                                  |
+|audio                      |...                                                  |
+|link                       |...                                                  |
+|unlink                     |...                                                  |
+|elements                   |...                                                  |
+|styles                     |...                                                  |
+|removeFormat               |...                                                  |
+|undo                       |...                                                  |
+|redo                       |...                                                  |
+|code                       |...                                                  |
+
 
 <br />
 <br />
+
+
 
 ### Methods
 The events(callback functions) is defined in jQuery.fn.inlineditor.defaults also.
@@ -89,13 +144,8 @@ The events(callback functions) is defined in jQuery.fn.inlineditor.defaults also
 |getValue      |                |...         |
 |setValue      |string          |...         |
 
-
 <br />
-
----
-
 <br />
-
 
 ### Events
 The calling method syntax: $('selector').inlineditor('method', parameter);
@@ -104,7 +154,6 @@ The calling method syntax: $('selector').inlineditor('method', parameter);
 |:-------------|:---------------|:-----------|
 |onBeforeEdit  |jquery selector |...         |
 |onAfterEdit   |jquery selector |...         |
-
 
 <br />
 <br />

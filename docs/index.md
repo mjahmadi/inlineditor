@@ -73,9 +73,10 @@ The options is defined in jQuery.fn.inlineditor.defaults
 |elements                 |array     |                         |                                                                     |
 |emoji                    |array     |                         |                                                                     |
 |colors                   |array     |                         |                                                                     |
-|enableAbsolutePosition   |boolean   |false   |Enables or disables the grabber that allows elements to be moved around.              |
-|enableInlineTableEditing |boolean   |false   |Enables or disables the table row/column insertion and deletion controls.             |
-|enableObjectResizing     |boolean   |false   |Enables or disables the resize handles on images, tables and other resizable objects. |
+|absolutePosition         |boolean   |false   |Enables or disables the grabber that allows elements to be moved around.              |
+|tableEditing             |boolean   |false   |Enables or disables the table row/column insertion and deletion controls.             |
+|objectResizing           |boolean   |false   |Enables or disables the resize handles on images, tables and other resizable objects. |
+|generateStyle            |boolean   |false   |True generates style attributes in markup, false generates presentational elements.   |
 
 <br />
 <br />

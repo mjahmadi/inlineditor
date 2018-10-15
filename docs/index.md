@@ -8,8 +8,8 @@ Inlineditor is a WYSIWYG editor for web pages. Its goal is to be powerful, simpl
 - Extremely lightweight and easy to use
 - Minimum dependencies
 - Configurable
-- More than 40 built-in commands
 - Multiple instances
+- More than 40 built-in commands
 - Multilingual and RTL support
 - Themable
 
@@ -18,8 +18,8 @@ Inlineditor is a WYSIWYG editor for web pages. Its goal is to be powerful, simpl
 
 ### Dependencies
 Inlineditor has some very common dependencies shown below
-- jquery(https://jquery.com/)
-- font-awesome(https://fontawesome.com/)
+- [jquery](https://jquery.com/)
+- [font-awesome](https://fontawesome.com/)
 
 <br />
 <br />

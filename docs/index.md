@@ -161,6 +161,29 @@ The calling method syntax: $('selector').inlineditor('method', parameter);
 
 ---
 
+### Browser compatibility
+
+|Name                  |Version         |Description |
+|:---------------------|:--------------:|:-----------|
+|Chrome                |41              |...         |
+|Edge                  |                |...         |
+|Firefox               |                |...         |
+|Edge                  |                |...         |
+|Internet Explorer     |9               |...         |
+|Opera                 |29              |...         |
+|Safari                |10              |...         |
+|Android webview       |                |...         |
+|Chrome for Android    |                |...         |
+|Edge Mobile           |                |...         |
+|Firefox for Android   |41              |...         |
+|Opera for Android     |29              |...         |
+|iOS Safari            |10              |...         |
+
+<br />
+<br />
+
+---
+
 ### Demos
 - [Mini](https://mjahmadi.github.io/inlineditor/demos/mini.html)
 - [Basic](https://mjahmadi.github.io/inlineditor/demos/basic.html)

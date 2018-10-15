@@ -1,22 +1,27 @@
 # inlineditor
-Inlineditor is a WYSIWYG editor for web pages. Its goal is to be powerful and simple and configurable. Inlineditor is extremely lightweight and can be easily integrated in any web application.
+Inlineditor is a WYSIWYG editor for web pages. Its goal is to be powerful, simple and easy to use. Inlineditor is extremely lightweight and can be easily integrated in any web application.
 
-
+<br />
+<br />
 
 ### Features
 - Extremely lightweight
 - Multilingual
 - Configurable
-- Themes
+- 45 built-in plugin
+- Minimum dependencies
+- Themable
 
-
+<br />
+<br />
 
 ### Dependencies
 Inlineditor has some very common dependencies shown below
 - jquery
 - font-awesome
 
-
+<br />
+<br />
 
 ### Usage
 
@@ -42,6 +47,7 @@ var editor = $.inlineditor('div#container', {
 });
 ```
 
+<br />
 <br />
 
 ---
@@ -70,10 +76,9 @@ The options is defined in jQuery.fn.inlineditor.defaults
 |emoji                 |array     | |...|
 |colors                |array     | |...|
 
-<br />
-
 ---
 
+<br />
 <br />
 
 ### Methods
@@ -81,8 +86,8 @@ The events(callback functions) is defined in jQuery.fn.inlineditor.defaults also
 
 |Name          |Parameters      |Description |
 |:-------------|:---------------|:-----------|
-|onBeforeEdit  |jquery selector |...         |
-|onAfterEdit   |jquery selector |...         |
+|getValue      |                |...         |
+|setValue      |string          |...         |
 
 
 <br />
@@ -97,15 +102,14 @@ The calling method syntax: $('selector').inlineditor('method', parameter);
 
 |Name          |Parameters      |Description |
 |:-------------|:---------------|:-----------|
-|  | |...         |
-|  | |...         |
+|onBeforeEdit  |jquery selector |...         |
+|onAfterEdit   |jquery selector |...         |
 
 
+<br />
 <br />
 
 ---
-
-<br />
 
 ### Demos
 - [Mini](https://mjahmadi.github.io/inlineditor/demos/mini.html)

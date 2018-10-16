@@ -75,9 +75,6 @@ The options is defined in $.fn.inlineditor.defaults
 |elements            |array   |        |                                                                                      |
 |emoji               |array   |        |                                                                                      |
 |colors              |array   |140 named colors |[Color Names Supported by All Browsers](https://www.w3schools.com/colors/colors_names.asp)                                    |
-|absolutePosition    |boolean |false   |Enables or disables the grabber that allows elements to be moved around.              |
-|tableEditing        |boolean |false   |Enables or disables the table row/column insertion and deletion controls.             |
-|objectResizing      |boolean |false   |Enables or disables the resize handles on images, tables and other resizable objects. |
 |generateStyle       |boolean |false   |True generates style attributes in markup, false generates presentational elements.   |
 |fadeinOnHover       |boolean |false   |true, false                                                                           |
 
@@ -138,7 +135,7 @@ The commands is defined in $.fn.inlineditor.commands
 <br />
 
 ### Methods
-The calling method syntax: $.fn.inlineditor.{method}(parameters);
+The methods is defined in $.fn.inlineditor and calling method syntax is ```$.fn.inlineditor.{method}(parameters);```
 
 |Name          |Parameters      |Description |
 |:-------------|:---------------|:-----------|

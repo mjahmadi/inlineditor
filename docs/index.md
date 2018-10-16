@@ -35,12 +35,12 @@ Add belowe lines to your html page
 <link rel="stylesheet" type="text/css"  href="dist/css/inlineditor.css" />
 ```
 
-HTML:
+HTML :
 ```html
 <div id="container"></div>
 ```
 
-Javascript:
+Javascript :
 ```javascript
 var editor = $.fn.inlineditor('div#container', {
   /*options*/

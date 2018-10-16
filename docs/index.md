@@ -138,7 +138,7 @@ The commands is defined in $.fn.inlineditor.commands
 <br />
 
 ### Methods
-The calling method syntax: $.fn.inlineditor('method', parameters);
+The calling method syntax: $.fn.inlineditor.{method}(parameters);
 
 |Name          |Parameters      |Description |
 |:-------------|:---------------|:-----------|
@@ -147,6 +147,7 @@ The calling method syntax: $.fn.inlineditor('method', parameters);
 |getValue      |void            |...         |
 |setValue      |string          |...         |
 |execCommand   |string, string  |...         |
+|destroy       |void            |...         |
 
 <br />
 <br />

@@ -139,8 +139,8 @@ The methods is defined in $.fn.inlineditor and calling method syntax is ```$.fn.
 
 |Name          |Parameters      |Description |
 |:-------------|:---------------|:-----------|
-|getOption     |string          |...         |
-|setOption     |string, string  |...         |
+|getOptions    |array           |...         |
+|setOptions    |array           |...         |
 |getValue      |void            |...         |
 |setValue      |string          |...         |
 |execCommand   |string, string  |...         |

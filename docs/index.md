@@ -167,7 +167,6 @@ The events(callback functions) is defined in $.fn.inlineditor.defaults also.
 |Name                  |Version         |Description                                                       |
 |:---------------------|:--------------:|:-----------------------------------------------------------------|
 |Chrome                |?               |...                                                               |
-|Edge                  |?               |...                                                               |
 |Firefox               |>= 41           |copy, cut commands will not work correctly in older versions.     |
 |Edge                  |?               |...                                                               |
 |Internet Explorer     |>= 9            |Very limited support.                                             |

@@ -235,7 +235,7 @@
 				if ($(e.target).is('input, button, i')) {
 					var cmd = $(e.target).is('i') ? $(e.target).parent().attr('data-cmd') : $(e.target).attr('data-cmd');
 					
-					plugin.settings.onBeforeEdit(el);
+					plugin.settings.onBeforeExecCmd(el);
 					
 					switch (cmd) {
 						
@@ -363,7 +363,7 @@
 							document.execCommand(cmd, false, false);
 					}
 					
-					plugin.settings.onAfterEdit(el);
+					plugin.settings.onAfterExecCmd(el);
 				}
 			});
 			
@@ -372,7 +372,7 @@
 					var cmd = $(e.target).attr('data-cmd');
 					var param = $(e.target).val();
 					
-					plugin.settings.onBeforeEdit()(el);
+					plugin.settings.onBeforeExecCmd()()(el);
 					
 					switch (cmd) {
 						case 'heading':
@@ -443,7 +443,7 @@
 							document.execCommand(cmd, false, param);
 					}
 					
-					plugin.settings.onAfterEdit()(el);
+					plugin.settings.onAfterExecCmd(el);
 					
 					$(e.target).val('');
 				}
@@ -456,11 +456,16 @@
 				} else if (plugin.settings.position === 'bottom') {
 					$('body').css('padding-bottom', $('#inlineditor-popup').height() + 5);
 				}
-			}			
+			}
+			
+			
+			plugin.settings.onInit();
         };
 		
 		
 		plugin.destroy = function() {
+			plugin.settings.onDestroy();
+			
 			$(el).attr('spellcheck', false);
 			$(el).attr('contenteditable', false);
 			

@@ -137,14 +137,14 @@ The commands is defined in $.fn.inlineditor.commands
 ### Methods
 The methods is defined in $.fn.inlineditor and calling method syntax is ```$.fn.inlineditor.{method}(parameters);```
 
-|Name          |Parameters      |Description |
-|:-------------|:---------------|:-----------|
-|getOptions    |array           |...         |
-|setOptions    |array           |...         |
-|getValue      |void            |...         |
-|setValue      |string          |...         |
-|execCommand   |string, string  |...         |
-|destroy       |void            |...         |
+|Name          |Parameters      |Description                                                                              |
+|:-------------|:---------------|:----------------------------------------------------------------------------------------|
+|getOptions    |none            |Returns the options property as array.                                                   |
+|setOptions    |array           |Sets the options property.                                                               |
+|getValue      |none            |Returns the editing area content as string.                                              |
+|setValue      |string          |Sets the editing area content.                                                           |
+|execCommand   |string, string  |Execute the given command with given parameters.                                         |
+|destroy       |none            |Destroys the editor object.                                                              |
 
 <br />
 <br />
@@ -154,12 +154,12 @@ The events(callback functions) is defined in $.fn.inlineditor.defaults also.
 
 |Name             |Parameters      |Description                                                            |
 |:----------------|:---------------|:----------------------------------------------------------------------|
-|onInit           |void            |The onInit event occurs after all controls have been initialized.      |
-|onDestroy        |void            |The onDestroy event occurs before editor destroy.                      |
-|onBeforeEdit     |void            |The OnBeforeEdit event occurs before editing editable area.            |
-|onAfterEdit      |void            |The OnAfterEdit event occurs after editing editable area.              |
-|onBeforeExecCmd  |string(cmd)     |The onBeforeExecCmd event occurs before before command execution.      |
-|onAfterExecCmd   |string(cmd)     |The onBeforeExecCmd event occurs before after command execution.       |
+|onInit           |none            |The onInit event occurs after all controls have been initialized.      |
+|onDestroy        |none            |The onDestroy event occurs before editor destroy.                      |
+|onBeforeEdit     |none            |The OnBeforeEdit event occurs before editing editable area.            |
+|onAfterEdit      |none            |The OnAfterEdit event occurs after editing editable area.              |
+|onBeforeExecCmd  |string          |The onBeforeExecCmd event occurs before before command execution.      |
+|onAfterExecCmd   |string          |The onAfterExecCmd event occurs after command execution.               |
 
 <br />
 <br />

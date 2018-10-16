@@ -66,7 +66,7 @@ The options is defined in $.fn.inlineditor.defaults
 |embedPathPrefix     |string  |null    |                                                                                      |
 |globalPathPrefix    |string  |null    |                                                                                      |
 |language            |string  |null or 'default' |                                                                            |
-|commands            |array   |null    |[List of all built-in commands](https://mjahmadi.github.io/inlineditor/#commands)     |
+|commands            |array   |null    |[List of all built-in commands](#commands)                                            |
 |toolbar             |string  |'full'  |                                                                                      |
 |theme               |string  |null or 'default' |Editor theme.                                                               |
 |heading             |array   |'Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'|                                                  |

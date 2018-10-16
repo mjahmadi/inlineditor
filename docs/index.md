@@ -58,7 +58,7 @@ The options is defined in $.fn.inlineditor.defaults
 |mode                |string  |'auto'  |'auto', 'inline', 'fixed'                                                             |
 |position            |string  |'top'   |'top', 'bottom', 'left', 'right'                                                      |
 |spellcheck          |boolean |false   |true, false                                                                           |
-|toolbarDirection    |string  |'ltr'   |'ltr', 'rtl'                                                                          |
+|toolbarDirection    |string  |null    |'ltr', 'rtl'                                                                          |
 |toolbarContentAlign |string  |'center'|'left', 'center', 'right'                                                             |
 |imagePathPrefix     |string  |null    |                                                                                      |
 |audioPathPrefix     |string  |null    |                                                                                      |

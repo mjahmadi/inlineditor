@@ -72,7 +72,7 @@ The options is defined in $.fn.inlineditor.defaults
 |fonts               |array   |'Arial', 'Helvetica', 'Times', 'Courier', 'Impact', 'Tahoma'|                                  |
 |additionalFonts     |array   |null    |                                                                                      |
 |sizes               |array   |'xx-small', 'x-small', 'small', 'normal', 'large', 'x-large', 'xx-large'                       |
-|elements            |array   |        |                                                                                      |
+|elements            |array   |'div', 'p', 'form', 'label', ['input', 'text'], 'password', 'textarea', 'select', 'checkbox', 'radio', 'submit', 'reset', 'button'   |                                                                                      |
 |emoji               |array   |        |                                                                                      |
 |colors              |array   |140 named colors |[Color Names Supported by All Browsers](https://www.w3schools.com/colors/colors_names.asp)                                    |
 |generateStyle       |boolean |false   |True generates style attributes in markup, false generates presentational elements.   |

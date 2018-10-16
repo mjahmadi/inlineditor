@@ -66,12 +66,13 @@ The options is defined in $.fn.inlineditor.defaults
 |embedPathPrefix     |string  |null    |                                                                                      |
 |globalPathPrefix    |string  |null    |                                                                                      |
 |language            |string  |null or 'default' |                                                                            |
-|commands            |array   |null    |                                                                                      |
+|commands            |array   |null    |[List of all built-in commands](https://mjahmadi.github.io/inlineditor/#commands)     |
 |toolbar             |string  |'full'  |                                                                                      |
+|theme               |string  |null or 'default' |Editor theme.                                                               |
 |heading             |array   |'Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'|                                                  |
-|styles              |string  |null    |                                                                                      |
-|fonts               |array   |'Arial', 'Helvetica', 'Times', 'Courier', 'Impact', 'Tahoma'|                                  |
-|additionalFonts     |array   |null    |                                                                                      |
+|styles              |string  |null    |User defined styles and CSS rules.                                                    |
+|fonts               |array   |'Arial', 'Times', 'Courier', 'Impact', 'Tahoma'|Editor standard default fonts.                 |
+|additionalFonts     |array   |null    |User defined addtional fonts.                                                         |
 |sizes               |array   |'xx-small', 'x-small', 'small', 'normal', 'large', 'x-large', 'xx-large'                       |
 |elements            |array   |'div', 'p', 'form', 'label', ['input', 'text'], 'password', 'textarea', 'select', 'checkbox', 'radio', 'submit', 'reset', 'button'   |                                                                                      |
 |emoji               |array   |[128513, 128591], [9986, 10160], [128640, 128704]|                                             |

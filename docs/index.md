@@ -152,10 +152,14 @@ The methods is defined in $.fn.inlineditor and calling method syntax is ```$.fn.
 ### Events
 The events(callback functions) is defined in $.fn.inlineditor.defaults also.
 
-|Name          |Parameters      |Description |
-|:-------------|:---------------|:-----------|
-|onBeforeEdit  |object          |...         |
-|onAfterEdit   |object          |...         |
+|Name             |Parameters      |Description                                                            |
+|:----------------|:---------------|:----------------------------------------------------------------------|
+|onInit           |void            |The onInit event occurs after all controls have been initialized.      |
+|onDestroy        |void            |The onDestroy event occurs before editor destroy.                      |
+|onBeforeEdit     |void            |The OnBeforeEdit event occurs before editing editable area.            |
+|onAfterEdit      |void            |The OnAfterEdit event occurs after editing editable area.              |
+|onBeforeExecCmd  |string(cmd)     |The onBeforeExecCmd event occurs before before command execution.      |
+|onAfterExecCmd   |string(cmd)     |The onBeforeExecCmd event occurs before after command execution.       |
 
 <br />
 <br />

@@ -66,14 +66,15 @@ The options is defined in $.fn.inlineditor.defaults
 |embedPathPrefix     |string  |null    |                                                                                      |
 |globalPathPrefix    |string  |null    |                                                                                      |
 |language            |string  |null or 'default' |                                                                            |
-|buttons             |array   |null    |                                                                                      |
+|commands            |array   |null    |                                                                                      |
+|toolbar             |string  |'full'  |                                                                                      |
 |heading             |array   |'Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'|                                                  |
 |styles              |string  |null    |                                                                                      |
 |fonts               |array   |'Arial', 'Helvetica', 'Times', 'Courier', 'Impact', 'Tahoma'|                                  |
 |additionalFonts     |array   |null    |                                                                                      |
 |sizes               |array   |'xx-small', 'x-small', 'small', 'normal', 'large', 'x-large', 'xx-large'                       |
 |elements            |array   |'div', 'p', 'form', 'label', ['input', 'text'], 'password', 'textarea', 'select', 'checkbox', 'radio', 'submit', 'reset', 'button'   |                                                                                      |
-|emoji               |array   |        |                                                                                      |
+|emoji               |array   |[128513, 128591], [9986, 10160], [128640, 128704]|                                             |
 |colors              |array   |140 named colors |[Color Names Supported by All Browsers](https://www.w3schools.com/colors/colors_names.asp)                                    |
 |generateStyle       |boolean |false   |True generates style attributes in markup, false generates presentational elements.   |
 |fadeinOnHover       |boolean |false   |true, false                                                                           |

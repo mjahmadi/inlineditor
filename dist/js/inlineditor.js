@@ -6,18 +6,22 @@
             mode: 'fixed',
 			position: 'top',
 			spellcheck: true,
-			toolbarDirection: 'ltr',
+			toolbarDirection: '',
 			toolbarContentAlign: 'center',
 			imagePathPrefix: '',
 			audioPathPrefix: '',
 			mediaPathPrefix: '',
 			embedPathPrefix: '',
+			globalPathPrefix: '',
+			generateStyle: false,
+			fadeinOnHover: false,
 			language: '',
-			buttons: [],
+			commands: [],
 			toolbar: 'full',
 			heading: ['Normal', ['Heading1', 'h1'], ['Heading2', 'h2'], ['Heading3', 'h3'], ['Heading4', 'h4'], ['Heading5', 'h5'], ['Heading6', 'h6']],
 			styles: [],
-			fonts: ['Arial', 'Helvetica', 'Times', 'Courier', 'Impact', 'Shabnam', 'B Nazanin', 'BMitra', 'BMitraBold', 'BRoya', 'BTabassom', 'BTitr', 'BTitrTGE', 'Yekan', 'BTraffic', 'BNasim', 'Tahoma'],
+			fonts: ['Arial', 'Helvetica', 'Times', 'Courier', 'Impact', 'Tahoma'],
+			additionalFonts: [],
 			sizes: [['xx-small', '1'], ['x-small', '2'], ['small', '3'], ['normal', '4'], ['large', '5'], ['x-large', '6'], ['xx-large', '7']],
 			elements: ['div', 'p', 'form', 'label', ['input', 'text'], 'password', 'textarea', 'select', 'checkbox', 'radio', 'submit', 'reset', 'button'],
 			emoji: [
@@ -52,8 +56,12 @@
 				'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'
 			],
 			
-			beforeEditCallback: function(el) {},
-			afterEditCallback: function(el) {}
+			onInit: function() {},
+			onDestroy: function() {},
+			onBeforeExecCmd: function(cmd) {},
+			onAfterExecCmd: function(cmd) {},
+			onBeforeEdit: function() {},
+			onAfterEdit: function() {}
         };
 		
 		
@@ -64,7 +72,7 @@
 		plugin.el = el;
 
 		
-		var buttons = {
+		var commands = {
 			bold: {icon:'fa fa-bold', title:'Bold', type:'button', elements:'', cmd:'bold'},
 			italic: {icon:'fa fa-italic', title:'Italic', type:'button', elements:'', cmd:'italic'},
 			justifyLeft: {icon:'fa fa-align-left', title:'Align Left', type:'button', elements:'', cmd:'justifyLeft'},
@@ -125,8 +133,8 @@
 			
 			if (plugin.settings.language && (plugin.settings.language !== 'default' || plugin.settings.language !== 'en_US')) {
 				if (window[plugin.settings.language]) {
-					$.each(window[plugin.settings.language].buttons, function(key, value) {
-						buttons[key].title = value;
+					$.each(window[plugin.settings.language].commands, function(key, value) {
+						commands[key].title = value;
 					});
 					
 					plugin.settings.toolbarDirection = window[plugin.settings.language].direction ? window[plugin.settings.language].direction : plugin.settings.toolbarDirection;
@@ -134,13 +142,13 @@
 			}
 			
 			
-			if (plugin.settings.buttons.length < 1) {
+			if (plugin.settings.commands.length < 1) {
 				if (plugin.settings.toolbar === 'full') {
-					plugin.settings.buttons = ['fonts', 'sizes', '-', 'cut', 'copy', 'paste', 'delete', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'rtl', 'ltr', '-', 'indent', 'outdent', 'leftQuote', 'rightQuote', '-', 'foreColor', 'backColor', '-', 'heading', 'paragraph', '-' , 'horizontalRule', 'linkBreak', '-', 'orderedList', 'unorderedList', '-', 'table', '-', 'emoji', 'embed', 'youtube', 'media', 'audio', 'image', '-', 'link', 'unlink', '-', 'elements', '-', 'styles', 'removeFormat', '-', 'undo', 'redo', '-', 'code', '-', 'about'];
+					plugin.settings.commands = ['fonts', 'sizes', '-', 'cut', 'copy', 'paste', 'delete', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'rtl', 'ltr', '-', 'indent', 'outdent', 'leftQuote', 'rightQuote', '-', 'foreColor', 'backColor', '-', 'heading', 'paragraph', '-' , 'horizontalRule', 'linkBreak', '-', 'orderedList', 'unorderedList', '-', 'table', '-', 'emoji', 'embed', 'youtube', 'media', 'audio', 'image', '-', 'link', 'unlink', '-', 'elements', '-', 'styles', 'removeFormat', '-', 'undo', 'redo', '-', 'code', '-', 'about'];
 				} else if (plugin.settings.toolbar === 'basic') {
-					plugin.settings.buttons = ['fonts', 'sizes', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'foreColor', 'backColor', '-', 'link', 'unlink', '-', 'removeFormat', '-', 'undo', 'redo', '-', 'about'];
+					plugin.settings.commands = ['fonts', 'sizes', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'foreColor', 'backColor', '-', 'link', 'unlink', '-', 'removeFormat', '-', 'undo', 'redo', '-', 'about'];
 				} else if(plugin.settings.toolbar === 'editor') {
-					plugin.settings.buttons = ['fonts', 'sizes', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'rtl', 'ltr', '-', 'foreColor', 'backColor', '-', 'heading', 'paragraph', '-', 'orderedList', 'unorderedList', '-', 'table', '-', 'link', 'unlink', '-', 'removeFormat', '-', 'undo', 'redo', '-', 'about'];
+					plugin.settings.commands = ['fonts', 'sizes', '-', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '-', 'rtl', 'ltr', '-', 'foreColor', 'backColor', '-', 'heading', 'paragraph', '-', 'orderedList', 'unorderedList', '-', 'table', '-', 'link', 'unlink', '-', 'removeFormat', '-', 'undo', 'redo', '-', 'about'];
 				}
 			}
 			
@@ -155,43 +163,60 @@
 			}).appendTo('body');
 			
 			
-			$.each(plugin.settings.buttons, function(key, value) {
+			if (plugin.settings.generateStyle) {
+				document.execCommand('styleWithCSS', false, null);
+			}
+			
+			
+			if (plugin.settings.fadeinOnHover) {
+				$('div#inlineditor-popup').css({'filter':'alpha(opacity=65)', 'opacity':'0.65'});
+			}
+			
+			
+			$.each(plugin.settings.commands, function(key, value) {
 				if (value === '-') {
 					$('<span class="separator">|</span>').appendTo('#inlineditor-popup');
 				} else {
-					if (buttons[value]) {
-						if (buttons[value]['type'] === undefined || buttons[value]['type'] === 'button' || buttons[value]['type'] === 'popup') {
-							$('<button id="' + value + '" title="' + (buttons[value]['title'] ? buttons[value]['title'] :'') + '" data-cmd="' + buttons[value]['cmd'] + '"><i class="'+ (buttons[value]['icon'] ? buttons[value]['icon'] :'') +'"></i>' + (['select', 'popup'].indexOf(buttons[value]['type']) > -1 ? '&nbsp;<i class="fa fa-caret-down"></i>' :'') + '</button>').appendTo('#inlineditor-popup');
+					if (commands[value]) {
+						if (commands[value]['type'] === undefined || commands[value]['type'] === 'button' || commands[value]['type'] === 'popup') {
+							$('<button id="' + value + '" title="' + (commands[value]['title'] ? commands[value]['title'] :'') + '" data-cmd="' + commands[value]['cmd'] + '"><i class="'+ (commands[value]['icon'] ? commands[value]['icon'] :'') +'"></i>' + (['select', 'popup'].indexOf(commands[value]['type']) > -1 ? '&nbsp;<i class="fa fa-caret-down"></i>' :'') + '</button>').appendTo('#inlineditor-popup');
 							
-						} else if (buttons[value]['type'] === 'select') {
+						} else if (commands[value]['type'] === 'select') {
 							if (plugin.settings.showLabels) {
-								$('<span>&nbsp;<label for="' + value + '">' + (buttons[value]['title'] ? buttons[value]['title'] :'') + ':</label></span>').appendTo('#inlineditor-popup');
+								$('<span>&nbsp;<label for="' + value + '">' + (commands[value]['title'] ? commands[value]['title'] :'') + ':</label></span>').appendTo('#inlineditor-popup');
 							}
 							
-							$('<select id="' + value + '" title="' + (buttons[value]['title'] ? buttons[value]['title'] :'') + '" data-cmd="' + buttons[value]['cmd'] + '"></select>').appendTo('#inlineditor-popup');
+							$('<select id="' + value + '" title="' + (commands[value]['title'] ? commands[value]['title'] :'') + '" data-cmd="' + commands[value]['cmd'] + '"></select>').appendTo('#inlineditor-popup');
 							$('select#'+value).append($('<option></option>').attr('value', '').text('---'));
-							$.each(buttons[value]['items'] ? buttons[value]['items'] : [], function(key, val){
+							$.each(commands[value]['items'] ? commands[value]['items'] : [], function(key, val){
 								$('select#'+value).append($('<option></option>').attr('value', ($.isArray(val) ? val[1] : val)).text(($.isArray(val) ? val[0] : val)));
 							});
 							
-						} else if (buttons[value]['type'] === 'colorpicker') {
+							if (value === 'fonts') {
+								$.each(plugin.settings.additionalFonts, function(key, val){
+									$('select#'+value).append($('<option></option>').attr('value', ($.isArray(val) ? val[1] : val)).text(($.isArray(val) ? val[0] : val)));
+								});
+							}
+
+							
+						} else if (commands[value]['type'] === 'colorpicker') {
 							if (plugin.settings.showLabels) {
-								$('<span>&nbsp;<label for="' + value + '">' + (buttons[value]['title'] ? buttons[value]['title'] :'') + ':</label></span>').appendTo('#inlineditor-popup');
+								$('<span>&nbsp;<label for="' + value + '">' + (commands[value]['title'] ? commands[value]['title'] :'') + ':</label></span>').appendTo('#inlineditor-popup');
 							}
 							
-							$('<select id="' + value + '" class="colorpicker" title="' + (buttons[value]['title'] ? buttons[value]['title'] :'') + '" data-cmd="' + buttons[value]['cmd'] + '"></select>').appendTo('#inlineditor-popup');
+							$('<select id="' + value + '" class="colorpicker" title="' + (commands[value]['title'] ? commands[value]['title'] :'') + '" data-cmd="' + commands[value]['cmd'] + '"></select>').appendTo('#inlineditor-popup');
 							$('select#'+value).append($('<option></option>').attr('value', '').text('---'));
-							$.each(buttons[value]['items'] ? buttons[value]['items'] : [], function(key, val) {
+							$.each(commands[value]['items'] ? commands[value]['items'] : [], function(key, val) {
 								$('select#'+value).append($('<option title="' + ($.isArray(val) ? val[1] : val) + '" style="background-color:' + ($.isArray(val) ? val[1] : val) + '"></option>').attr('value', ($.isArray(val) ? val[1] : val)).text(($.isArray(val) ? val[0] : val)));
 							});
-						} else if (buttons[value]['type'] === 'emojipicker') {
+						} else if (commands[value]['type'] === 'emojipicker') {
 							if (plugin.settings.showLabels) {
-								$('<span>&nbsp;<label for="' + value + '">' + (buttons[value]['title'] ? buttons[value]['title'] :'') + ':</label></span>').appendTo('#inlineditor-popup');
+								$('<span>&nbsp;<label for="' + value + '">' + (commands[value]['title'] ? commands[value]['title'] :'') + ':</label></span>').appendTo('#inlineditor-popup');
 							}
 							
-							$('<select id="' + value + '" class="emojipicker" title="' + (buttons[value]['title'] ? buttons[value]['title'] :'') + '" data-cmd="' + buttons[value]['cmd'] + '"></select>').appendTo('#inlineditor-popup');
+							$('<select id="' + value + '" class="emojipicker" title="' + (commands[value]['title'] ? commands[value]['title'] :'') + '" data-cmd="' + commands[value]['cmd'] + '"></select>').appendTo('#inlineditor-popup');
 							$('select#'+value).append($('<option></option>').attr('value', '').text('---'));
-							$.each(buttons[value]['items'] ? buttons[value]['items'] : [], function(key, val){
+							$.each(commands[value]['items'] ? commands[value]['items'] : [], function(key, val){
 								if ($.isArray(val)) {
 									for (var x = val[0]; x < val[1]; x++) {
 										$('select#'+value).append($('<option></option>').attr('value', '&#' + x + ';').html('&#' + x + ';'));
@@ -210,7 +235,7 @@
 				if ($(e.target).is('input, button, i')) {
 					var cmd = $(e.target).is('i') ? $(e.target).parent().attr('data-cmd') : $(e.target).attr('data-cmd');
 					
-					plugin.settings.beforeEditCallback(el);
+					plugin.settings.onBeforeEdit(el);
 					
 					switch (cmd) {
 						
@@ -231,7 +256,19 @@
 							break;
 						
 						case 'insertTable':
-							var buf = prompt('Table Dimension [5x10]:');
+							var buf = prompt('Table Dimension:', '2x3');
+							
+							if (buf && buf.trim()) {
+								break;
+							}
+							
+							/*
+							if (buf.lastIndexOf('x') === -1) {
+								alert('Error: Invalid table dimension!');
+								break;
+							}
+							*/
+							
 							dim = buf.split('x', 2);
 							console.log(dim);
 							if (dim[0] && dim[1]) {
@@ -258,14 +295,14 @@
 							break;
 							
 						case 'insertImage':
-							var url = prompt('Image URL:', plugin.settings.imagePathPrefix);
+							var url = prompt('Image URL:', plugin.settings.imagePathPrefix ? plugin.settings.imagePathPrefix : plugin.settings.pathPrefix);
 							if (url && url.trim()) {
 								document.execCommand(cmd, false, url.trim());
 							}
 							break;
 							
 						case 'insertMedia':
-							var url = prompt('Media URL:', plugin.settings.mediaPathPrefix);
+							var url = prompt('Media URL:', plugin.settings.mediaPathPrefix ? plugin.settings.mediaPathPrefix : plugin.settings.pathPrefix);
 							if (url && url.trim()) {
 								var media = '<video controls>'+
 											'<source src="' + url.trim() + '" type="video/' + url.split('.').pop() + '">'+
@@ -276,7 +313,7 @@
 							break;
 							
 						case 'insertAudio':
-							var url = prompt('Audio URL:', plugin.settings.audioPathPrefix);
+							var url = prompt('Audio URL:', plugin.settings.audioPathPrefix ? plugin.settings.audioPathPrefix : plugin.settings.pathPrefix);
 							if (url && url.trim()) {
 								var audio = '<audio controls>'+
 											'<source src="' + url.trim() + '" type="audio/' + url.split('.').pop() + '">'+
@@ -287,7 +324,7 @@
 							break;
 							
 						case 'insertEmbed':
-							var url = prompt('Embed/Object URL:', plugin.settings.embedPathPrefix);
+							var url = prompt('Embed/Object URL:', plugin.settings.embedPathPrefix ? plugin.settings.embedPathPrefix : plugin.settings.pathPrefix);
 							if (url && url.trim()) {
 								var embed = '<embed src="' + url.trim() + '">';
 								document.execCommand('insertHTML', false, embed);
@@ -295,7 +332,7 @@
 							break;
 							
 						case 'insertYoutube':
-							var url = prompt('Youtube Video URL:');
+							var url = prompt('Youtube Video URL:', plugin.settings.youtubePathPrefix ? plugin.settings.youtubePathPrefix : plugin.settings.pathPrefix);
 							if (url && url.trim()) {
 								var media = '<iframe src="' + url.trim() + '"></iframe>';
 								document.execCommand('insertHTML', false, media);
@@ -326,7 +363,7 @@
 							document.execCommand(cmd, false, false);
 					}
 					
-					plugin.settings.afterEditCallback(el);
+					plugin.settings.onAfterEdit(el);
 				}
 			});
 			
@@ -335,7 +372,7 @@
 					var cmd = $(e.target).attr('data-cmd');
 					var param = $(e.target).val();
 					
-					plugin.settings.beforeEditCallback(el);
+					plugin.settings.onBeforeEdit()(el);
 					
 					switch (cmd) {
 						case 'heading':
@@ -406,7 +443,7 @@
 							document.execCommand(cmd, false, param);
 					}
 					
-					plugin.settings.afterEditCallback(el);
+					plugin.settings.onAfterEdit()(el);
 					
 					$(e.target).val('');
 				}

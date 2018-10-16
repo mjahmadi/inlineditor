@@ -166,16 +166,16 @@ The events(callback functions) is defined in $.fn.inlineditor.defaults also.
 
 |Name                  |Version         |Description                                                       |
 |:---------------------|:--------------:|:-----------------------------------------------------------------|
-|Chrome                |                |...                                                               |
-|Edge                  |                |...                                                               |
+|Chrome                |?               |...                                                               |
+|Edge                  |?               |...                                                               |
 |Firefox               |>= 41           |copy, cut commands will not work correctly in older versions.     |
-|Edge                  |                |...                                                               |
+|Edge                  |?               |...                                                               |
 |Internet Explorer     |>= 9            |Very limited support.                                             |
 |Opera                 |>= 29           |copy, cut commands will not work correctly in older versions.     |
 |Safari                |>= 10           |copy, cut commands will not work correctly in older versions.     |
-|Android webview       |                |...                                                               |
-|Chrome for Android    |                |...                                                               |
-|Edge Mobile           |                |...                                                               |
+|Android webview       |?               |...                                                               |
+|Chrome for Android    |?               |...                                                               |
+|Edge Mobile           |?               |...                                                               |
 |Firefox for Android   |>= 41           |copy, cut commands will not work correctly in older versions.     |
 |Opera for Android     |>= 29           |copy, cut commands will not work correctly in older versions.     |
 |iOS Safari            |>= 10           |copy, cut commands will not work correctly in older versions.     |

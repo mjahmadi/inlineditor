@@ -18,7 +18,7 @@ Inlineditor is a WYSIWYG editor for web pages. Its goal is to be powerful, simpl
 
 ### Dependencies
 Inlineditor has some very common dependencies shown below
-- [jquery](https://jquery.com/)(as inlineditor is a jquery plugin)
+- [jquery](https://jquery.com/) (as inlineditor is a jquery plugin)
 - [font-awesome](https://fontawesome.com/)
 
 <br />

@@ -18,7 +18,7 @@ Inlineditor is a WYSIWYG editor for web pages. Its goal is to be powerful, simpl
 
 ### Dependencies
 Inlineditor has some very common dependencies shown below
-- [jquery](https://jquery.com/)
+- [jquery](https://jquery.com/)(as inlineditor is a jquery plugin)
 - [font-awesome](https://fontawesome.com/)
 
 <br />
@@ -58,7 +58,7 @@ The options is defined in $.fn.inlineditor.defaults
 |mode                |string  |'auto'  |'auto', 'inline', 'fixed'                                                             |
 |position            |string  |'top'   |'top', 'bottom', 'left', 'right'                                                      |
 |spellcheck          |boolean |false   |true, false                                                                           |
-|toolbarDirection    |string  |null    |'ltr', 'rtl'                                                                          |
+|toolbarDirection    |string  |null or ‘default’ |'ltr', 'rtl'                                                                |
 |toolbarContentAlign |string  |'center'|'left', 'center', 'right'                                                             |
 |imagePathPrefix     |string  |null    |                                                                                      |
 |audioPathPrefix     |string  |null    |                                                                                      |

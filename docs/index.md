@@ -70,7 +70,7 @@ The options is defined in $.fn.inlineditor.defaults
 |toolbar             |string  |'full'  |                                                                                      |
 |theme               |string  |null or 'default' |Editor theme.                                                               |
 |heading             |array   |'Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'|                                                  |
-|styles              |string  |null    |User defined styles and CSS rules.                                                    |
+|styles              |array   |null    |User defined styles and CSS rules.                                                    |
 |fonts               |array   |'Arial', 'Times', 'Courier', 'Impact', 'Tahoma'|Editor standard default fonts.                 |
 |additionalFonts     |array   |null    |User defined addtional fonts.                                                         |
 |sizes               |array   |'xx-small', 'x-small', 'small', 'normal', 'large', 'x-large', 'xx-large'                       |

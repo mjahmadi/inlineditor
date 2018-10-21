@@ -158,8 +158,7 @@ The events(callback functions) is defined in $.fn.inlineditor.defaults also.
 |:----------------|:---------------|:----------------------------------------------------------------------|
 |onInit           |none            |The onInit event occurs after all controls have been initialized.      |
 |onDestroy        |none            |The onDestroy event occurs before editor destroy.                      |
-|onBeforeEdit     |none            |The OnBeforeEdit event occurs before editing editable area.            |
-|onAfterEdit      |none            |The OnAfterEdit event occurs after editing editable area.              |
+|onEdit           |event           |The onEdit event occurs after editing editable area.                   |
 |onBeforeExecCmd  |string          |The onBeforeExecCmd event occurs before before command execution.      |
 |onAfterExecCmd   |string          |The onAfterExecCmd event occurs after command execution.               |
 

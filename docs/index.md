@@ -165,6 +165,27 @@ The events(callback functions) is defined in $.fn.inlineditor.defaults also.
 <br />
 <br />
 
+### Languages and locale
+A language file contains a set of translations for the text strings used in Inlineditor. Language files can be found under locale directory in json format. The default language is 'en_US' which is the built-in and has no json file in locale directory, other languages can be created and used as below.
+
+Add the language file to your HTML page.
+```html
+<script type="text/javascript" src="locale/fa_IR.js"></script>
+```
+
+Set the current language for editor.
+```javascript
+var editor = $.fn.inlineditor('div#container', {
+  ...
+  language: 'fa_IR'
+  ...
+});
+```
+
+
+<br />
+<br />
+
 ---
 
 ### Browser compatibility

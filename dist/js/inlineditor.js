@@ -61,8 +61,7 @@
 			onDestroy: function() {},
 			onBeforeExecCmd: function(cmd) {},
 			onAfterExecCmd: function(cmd) {},
-			onBeforeEdit: function() {},
-			onAfterEdit: function() {}
+			onEdit: function(event) {}
         };
 		
 		
@@ -459,6 +458,9 @@
 				}
 			}
 			
+			$(el).on('input', function(event){
+				plugin.settings.onEdit(event);
+			});
 			
 			plugin.settings.onInit();
         };

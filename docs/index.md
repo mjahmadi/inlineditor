@@ -64,7 +64,7 @@ The options is defined in $.fn.inlineditor.defaults
 |audioPathPrefix     |string  |null    |---                                                                                   |
 |mediaPathPrefix     |string  |null    |---                                                                                   |
 |embedPathPrefix     |string  |null    |---                                                                                   |
-|globalPathPrefix    |string  |null    |Will add adress prefix to all address boxes.                                          |
+|globalPathPrefix    |string  |null    |Will add address prefix to all address boxes.                                         |
 |language            |string  |null or 'default' or 'en_US' |The default language is 'en_US' that has no definition 'js' file.  All other languages must have 'js' file in the 'locale/' directory.   |
 |commands            |array   |null    |[List of all built-in commands](#commands)                                            |
 |toolbar             |string  |'standard'  |Predefined toolbar buttons 'full', 'standard', 'mini'                             |

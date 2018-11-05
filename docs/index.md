@@ -60,14 +60,14 @@ The options is defined in $.fn.inlineditor.defaults
 |spellcheck          |boolean |false   |true, false                                                                           |
 |toolbarDirection    |string  |null or ‘default’ |'ltr', 'rtl'                                                                |
 |toolbarContentAlign |string  |'center'|'left', 'center', 'right'                                                             |
-|imagePathPrefix     |string  |null    |                                                                                      |
-|audioPathPrefix     |string  |null    |                                                                                      |
-|mediaPathPrefix     |string  |null    |                                                                                      |
-|embedPathPrefix     |string  |null    |                                                                                      |
-|globalPathPrefix    |string  |null    |                                                                                      |
-|language            |string  |null or 'default' |                                                                            |
+|imagePathPrefix     |string  |null    |---                                                                                   |
+|audioPathPrefix     |string  |null    |---                                                                                   |
+|mediaPathPrefix     |string  |null    |---                                                                                   |
+|embedPathPrefix     |string  |null    |---                                                                                   |
+|globalPathPrefix    |string  |null    |Will add adress prefix to all address boxes.                                          |
+|language            |string  |null or 'default' or 'en_US' |The default language is 'en_US' that has no definition 'js' file.  All other languages must have 'js' file in the 'locale/' directory.   |
 |commands            |array   |null    |[List of all built-in commands](#commands)                                            |
-|toolbar             |string  |'full'  |                                                                                      |
+|toolbar             |string  |'standard'  |Predefined toolbar buttons 'full', 'standard', 'mini'                             |
 |theme               |string  |null or 'default' |Editor theme.                                                               |
 |heading             |array   |'Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'|                                                  |
 |styles              |array   |null    |User defined styles and CSS rules.                                                    |
@@ -75,7 +75,7 @@ The options is defined in $.fn.inlineditor.defaults
 |additionalFonts     |array   |null    |User defined addtional fonts.                                                         |
 |sizes               |array   |'xx-small', 'x-small', 'small', 'normal', 'large', 'x-large', 'xx-large'                       |
 |elements            |array   |'div', 'p', 'form', 'label', ['input', 'text'], 'password', 'textarea', 'select', 'checkbox', 'radio', 'submit', 'reset', 'button'   |                                                                                      |
-|emoji               |array   |[128513, 128591], [9986, 10160], [128640, 128704]|                                             |
+|emoji               |array   |[128513, 128591], [9986, 10160], [128640, 128704] |Range or exact unicode value.               |
 |colors              |array   |140 named colors |[Color Names Supported by All Browsers](https://www.w3schools.com/colors/colors_names.asp)                                    |
 |generateStyle       |boolean |false   |True generates style attributes in markup, false generates presentational elements.   |
 |fadeinOnHover       |boolean |false   |true, false                                                                           |
@@ -212,6 +212,5 @@ var editor = $.fn.inlineditor('div#container', {
 
 ### Demos
 - [Mini](https://mjahmadi.github.io/inlineditor/demos/mini.html)
-- [Basic](https://mjahmadi.github.io/inlineditor/demos/basic.html)
-- [Editors](https://mjahmadi.github.io/inlineditor/demos/editors.html)
-- [Full featured](https://mjahmadi.github.io/inlineditor/demos/full.html)
+- [Standard](https://mjahmadi.github.io/inlineditor/demos/standard.html)
+- [Full](https://mjahmadi.github.io/inlineditor/demos/full.html)

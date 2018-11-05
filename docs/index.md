@@ -212,6 +212,6 @@ var editor = $.fn.inlineditor('div#container', {
 ---
 
 ### Demos
-- [Mini](mini.html)
-- [Standard](standard.html)
-- [Full](full.html)
+- [Mini](https://mjahmadi.github.io/inlineditor/mini.html)
+- [Standard](https://mjahmadi.github.io/inlineditor/standard.html)
+- [Full](https://mjahmadi.github.io/inlineditor/full.html)

@@ -207,11 +207,3 @@ var editor = $.fn.inlineditor('div#container', {
 |iOS Safari            |>= 10           |copy, cut commands will not work correctly in older versions.     |
 
 <br />
-<br />
-
-### Screenshots
-
-<p align="center">
-  <img src="https://github.com/mjahmadi/inlineditor/blob/master/docs/screenshot.png" />
-</p>
-

@@ -231,223 +231,20 @@
 			});
 			
 			
-			$('#inlineditor-popup').on('click', function(e) {
+			$('#inlineditor-popup').on('change click', function(e) {
+				plugin.settings.onBeforeExecCmd(el);
+				
 				if ($(e.target).is('input, button, i')) {
 					var cmd = $(e.target).is('i') ? $(e.target).parent().attr('data-cmd') : $(e.target).attr('data-cmd');
-					
-					plugin.settings.onBeforeExecCmd(el);
-					
-					switch (cmd) {
-						
-						case 'rtl': case 'ltr':
-							var parent_element = getSelectionParentElement();
-							$(parent_element).css('direction', cmd);
-							break;
-							
-						case 'createLink':
-							if (getSelectionText()) {
-								var url = prompt('Link URL:');
-								if (url && url.trim()) {
-									document.execCommand(cmd, false, url);
-								} else {
-									alert('Link url missing!');
-								}
-							}
-							break;
-						
-						case 'insertTable':
-							var buf = prompt('Table Dimension:', '2x3');
-							
-							if (buf && buf.trim()) {
-								break;
-							}
-							
-							/*
-							if (buf.lastIndexOf('x') === -1) {
-								alert('Error: Invalid table dimension!');
-								break;
-							}
-							*/
-							
-							dim = buf.split('x', 2);
-							console.log(dim);
-							if (dim[0] && dim[1]) {
-								
-								var td_count = parseInt(dim[0]);
-								var tr_count = parseInt(dim[1]);
-								
-								var str = '<table border="1" style="width:100%">';
-								for (i=0; i<tr_count; i++) {
-									str += '<tr>';
-									
-									for (j=0; j<td_count; j++) {
-										str += '<td></td>';
-									}
-									
-									str += '</tr>';
-								}
-								str += '</table>';
-								
-								document.execCommand('insertHTML', false, str);
-							} else {
-								alert('Invalid table dimension!');
-							}
-							break;
-							
-						case 'insertImage':
-							var url = prompt('Image URL:', plugin.settings.imagePathPrefix ? plugin.settings.imagePathPrefix : plugin.settings.pathPrefix);
-							if (url && url.trim()) {
-								document.execCommand(cmd, false, url.trim());
-							}
-							break;
-							
-						case 'insertMedia':
-							var url = prompt('Media URL:', plugin.settings.mediaPathPrefix ? plugin.settings.mediaPathPrefix : plugin.settings.pathPrefix);
-							if (url && url.trim()) {
-								var media = '<video controls>'+
-											'<source src="' + url.trim() + '" type="video/' + url.split('.').pop() + '">'+
-											'Your browser does not support the video tag.'+
-											'</video>';
-								document.execCommand('insertHTML', false, media);
-							}
-							break;
-							
-						case 'insertAudio':
-							var url = prompt('Audio URL:', plugin.settings.audioPathPrefix ? plugin.settings.audioPathPrefix : plugin.settings.pathPrefix);
-							if (url && url.trim()) {
-								var audio = '<audio controls>'+
-											'<source src="' + url.trim() + '" type="audio/' + url.split('.').pop() + '">'+
-											'Your browser does not support the audio element.'+
-											'</audio>';
-								document.execCommand('insertHTML', false, audio);
-							}
-							break;
-							
-						case 'insertEmbed':
-							var url = prompt('Embed/Object URL:', plugin.settings.embedPathPrefix ? plugin.settings.embedPathPrefix : plugin.settings.pathPrefix);
-							if (url && url.trim()) {
-								var embed = '<embed src="' + url.trim() + '">';
-								document.execCommand('insertHTML', false, embed);
-							}
-							break;
-							
-						case 'insertYoutube':
-							var url = prompt('Youtube Video URL:', plugin.settings.youtubePathPrefix ? plugin.settings.youtubePathPrefix : plugin.settings.pathPrefix);
-							if (url && url.trim()) {
-								var media = '<iframe src="' + url.trim() + '"></iframe>';
-								document.execCommand('insertHTML', false, media);
-							}
-							break;
-							
-						case 'showHTMLCode':
-							var codeDlg = window.open('', 'codeDlg', 'status=1,width=640,height=480,scrollbars=yes,resizable=yes,top=50,left=50');
-							codeDlg.document.title = 'inlineditor - Code View';
-							codeDlg.document.write('<xmp>' + $(el).html().trim() + '</xmp>');
-							break;
-							
-						case 'leftQuote':
-							var str = getSelectionText();
-							document.execCommand('insertHTML', false, '<p style="border-left:5px silver solid; padding:10px; margin:10px">' + str + '</p>');
-							break;
-							
-						case 'rightQuote':
-							var str = getSelectionText();
-							document.execCommand('insertHTML', false, '<p style="border-right:5px silver solid; padding:10px; margin:10px">' + str + '</p>');
-							break;
-							
-						case 'about':
-							alert('inlineditor\nLightweight WYSIWYG editor for websites.\n\nhttps://github.com/mjahmadi/inlineditor');
-							break;
-							
-						default:
-							document.execCommand(cmd, false, false);
-					}
-					
-					plugin.settings.onAfterExecCmd(el);
+				} else if ($(e.target).is('select')) {
+					var cmd = $(e.target).attr('data-cmd');
 				}
+				
+				plugin.execCommand(cmd, e);
+					
+				plugin.settings.onAfterExecCmd(el);
 			});
 			
-			$('#inlineditor-popup').on('change', function(e) {
-				if ($(e.target).is('select')) {
-					var cmd = $(e.target).attr('data-cmd');
-					var param = $(e.target).val();
-					
-					plugin.settings.onBeforeExecCmd()()(el);
-					
-					switch (cmd) {
-						case 'heading':
-							document.execCommand('formatBlock', false, '<' + $(e.target).val() + '>');
-							break;
-						
-						case 'foreColor': case 'backColor':
-							document.execCommand(cmd, false, $(e.target).val());
-							break;
-							
-						case 'insertElements':
-							var str = '';
-							
-							switch ($(e.target).val()) {
-								
-								case 'form':
-									str = '<form id="" name="" method="" action=""></form>';
-									break;
-								
-								case 'input': case 'password': case 'radio': case 'checkbox': case 'file': case 'tel': case 'email':
-								case 'color': case 'date': case 'number': case 'range': case 'search': case 'time': case 'url':
-								case 'week': case 'month': case 'image': case 'hidden': case 'datetime-local':
-									str = '<input id="" name="" type="'+$(e.target).val()+'" value=""/>';
-									break;
-								
-								case 'label':
-									str = '<label for="">Label</label>';
-									break;
-								
-								case 'submit':
-									str = '<button type="submit">Submit</button>';
-									break;
-								
-								case 'reset':
-									str = '<button type="reset">Reset</button>';
-									break;
-								
-								case 'button':
-									str = '<button id="" type="button">Button</button>';
-									break;
-								
-								case 'textarea':
-									str = '<textarea id="" name="">textarea</textarea>';
-									break;
-								
-								case 'select':
-									str = '<select id="" name=""><option value="val-1">val-1</option></select>';
-									break;
-									
-								default :
-									str = '<'+$(e.target).val()+'></'+$(e.target).val()+'>';
-								
-							}
-							
-							document.execCommand('insertHTML', false, str);
-							break;
-						
-						case 'styles':
-							wrappedselection = '<span class="' + $(e.target).val() + '">' + getSelectionText() + '</span>';
-							document.execCommand('insertHTML', false, wrappedselection);
-							break;
-							
-						case 'insertEmoji':
-							document.execCommand('insertHTML', false, $(e.target).val());
-							break;
-						
-						default:
-							document.execCommand(cmd, false, param);
-					}
-					
-					plugin.settings.onAfterExecCmd(el);
-					
-					$(e.target).val('');
-				}
-			});
 			
 			if (plugin.settings.mode.indexOf('fixed') !== -1) {
 				$('#inlineditor-popup').addClass(plugin.settings.position);
@@ -464,6 +261,247 @@
 			
 			plugin.settings.onInit();
         };
+		
+		
+		plugin.getElement = function() {
+			return $(el);
+		};
+		
+		
+		plugin.getOption = function(opt) {
+			return plugin.settings[opt] || undefined;
+		};
+		
+		
+		plugin.setOption = function(opt, val) {
+			plugin.settings[opt] = val;
+		};
+		
+		
+		plugin.getValue = function() {
+			return $(el).html();
+		};
+		
+		
+		plugin.setValue = function(val) {
+			$(el).html(val);
+		};
+		
+		
+		plugin.execCommand = function(cmd, e) {
+		
+			var param = $(e.target).val();
+			
+			switch (cmd) {
+				
+				case 'rtl': case 'ltr':
+					var parent_element = getSelectionParentElement();
+					$(parent_element).css('direction', cmd);
+					break;
+					
+
+				case 'createLink':
+					if (getSelectionText()) {
+						var url = prompt('Link URL:');
+						if (url && url.trim()) {
+							document.execCommand(cmd, false, url);
+						} else {
+							alert('Link url missing!');
+						}
+					}
+					break;
+					
+					
+				case 'insertTable':
+					var buf = prompt('Table Dimension:', '2x3');
+
+					if (buf && buf.trim()) {
+						break;
+					}
+
+					/*
+					if (buf.lastIndexOf('x') === -1) {
+						alert('Error: Invalid table dimension!');
+						break;
+					}
+					*/
+
+					dim = buf.split('x', 2);
+					console.log(dim);
+					if (dim[0] && dim[1]) {
+
+						var td_count = parseInt(dim[0]);
+						var tr_count = parseInt(dim[1]);
+
+						var str = '<table border="1" style="width:100%">';
+						for (i=0; i<tr_count; i++) {
+							str += '<tr>';
+
+							for (j=0; j<td_count; j++) {
+								str += '<td></td>';
+							}
+
+							str += '</tr>';
+						}
+						str += '</table>';
+
+						document.execCommand('insertHTML', false, str);
+					} else {
+						alert('Invalid table dimension!');
+					}
+					break;
+					
+
+				case 'insertImage':
+					var url = prompt('Image URL:', plugin.settings.imagePathPrefix ? plugin.settings.imagePathPrefix : plugin.settings.globalPathPrefix);
+					if (url && url.trim()) {
+						document.execCommand(cmd, false, url.trim());
+					}
+					break;
+					
+
+				case 'insertMedia':
+					var url = prompt('Media URL:', plugin.settings.mediaPathPrefix ? plugin.settings.mediaPathPrefix : plugin.settings.globalPathPrefix);
+					if (url && url.trim()) {
+						var media = '<video controls>'+
+									'<source src="' + url.trim() + '" type="video/' + url.split('.').pop() + '">'+
+									'Your browser does not support the video tag.'+
+									'</video>';
+						document.execCommand('insertHTML', false, media);
+					}
+					break;
+					
+					
+				case 'insertAudio':
+					var url = prompt('Audio URL:', plugin.settings.audioPathPrefix ? plugin.settings.audioPathPrefix : plugin.settings.globalPathPrefix);
+					if (url && url.trim()) {
+						var audio = '<audio controls>'+
+									'<source src="' + url.trim() + '" type="audio/' + url.split('.').pop() + '">'+
+									'Your browser does not support the audio element.'+
+									'</audio>';
+						document.execCommand('insertHTML', false, audio);
+					}
+					break;
+					
+					
+				case 'insertEmbed':
+					var url = prompt('Embed/Object URL:', plugin.settings.embedPathPrefix ? plugin.settings.embedPathPrefix : plugin.settings.globalPathPrefix);
+					if (url && url.trim()) {
+						var embed = '<embed src="' + url.trim() + '">';
+						document.execCommand('insertHTML', false, embed);
+					}
+					break;
+					
+					
+				case 'insertYoutube':
+					var url = prompt('Youtube Video URL:', plugin.settings.youtubePathPrefix ? plugin.settings.youtubePathPrefix : plugin.settings.globalPathPrefix);
+					if (url && url.trim()) {
+						var media = '<iframe src="' + url.trim() + '"></iframe>';
+						document.execCommand('insertHTML', false, media);
+					}
+					break;
+					
+					
+				case 'showHTMLCode':
+					var codeDlg = window.open('', 'codeDlg', 'status=1,width=640,height=480,scrollbars=yes,resizable=yes,top=50,left=50');
+					codeDlg.document.title = 'inlineditor - Code View';
+					codeDlg.document.write('<xmp>' + $(el).html().trim() + '</xmp>');
+					break;
+					
+					
+				case 'leftQuote':
+					var str = getSelectionText();
+					document.execCommand('insertHTML', false, '<p style="border-left:5px silver solid; padding:10px; margin:10px">' + str + '</p>');
+					break;
+
+				case 'rightQuote':
+					var str = getSelectionText();
+					document.execCommand('insertHTML', false, '<p style="border-right:5px silver solid; padding:10px; margin:10px">' + str + '</p>');
+					break;
+					
+					
+				case 'about':
+					alert('inlineditor\nLightweight WYSIWYG editor for websites.\n\nhttps://github.com/mjahmadi/inlineditor');
+					break;
+					
+					
+				case 'heading':
+					document.execCommand('formatBlock', false, '<' + param + '>');
+					break;
+					
+					
+				case 'foreColor': case 'backColor':
+					document.execCommand(cmd, false, $(e.target).val());
+					break;
+					
+					
+				case 'insertElements':
+					var str = '';
+
+					switch ($(e.target).val()) {
+
+						case 'form':
+							str = '<form id="" name="" method="" action=""></form>';
+							break;
+
+						case 'input': case 'password': case 'radio': case 'checkbox': case 'file': case 'tel': case 'email':
+						case 'color': case 'date': case 'number': case 'range': case 'search': case 'time': case 'url':
+						case 'week': case 'month': case 'image': case 'hidden': case 'datetime-local':
+							str = '<input id="" name="" type="'+param+'" value=""/>';
+							break;
+
+						case 'label':
+							str = '<label for="">Label</label>';
+							break;
+
+						case 'submit':
+							str = '<button type="submit">Submit</button>';
+							break;
+
+						case 'reset':
+							str = '<button type="reset">Reset</button>';
+							break;
+
+						case 'button':
+							str = '<button id="" type="button">Button</button>';
+							break;
+
+						case 'textarea':
+							str = '<textarea id="" name="">textarea</textarea>';
+							break;
+
+						case 'select':
+							str = '<select id="" name=""><option value="val-1">val-1</option></select>';
+							break;
+
+						default :
+							str = '<'+param+'></'+param+'>';
+
+					}
+
+					document.execCommand('insertHTML', false, str);
+					break;
+					
+					
+				case 'styles':
+					wrappedselection = '<span class="' + param + '">' + getSelectionText() + '</span>';
+					document.execCommand('insertHTML', false, wrappedselection);
+					break;
+					
+					
+				case 'insertEmoji':
+					document.execCommand('insertHTML', false, param);
+					break;
+					
+					
+				default:
+					document.execCommand(cmd, false, false);
+			}
+			
+			if ($(e.target).is('select')) {
+				$(e.target).val('');
+			}
+		};
 		
 		
 		plugin.destroy = function() {
@@ -486,7 +524,7 @@
 						parentEl = parentEl.parentNode;
 					}
 				}
-			} else if ( (sel = document.selection) && sel.type !== 'Control') {
+			} else if ((sel = document.selection) && sel.type !== 'Control') {
 				parentEl = sel.createRange().parentElement();
 			}
 			
@@ -537,9 +575,8 @@
 			};
 		};
 		
-        init();
-		
-		
+        
+		init();
 		
 		return plugin;
     };

@@ -141,8 +141,9 @@ The methods is defined in $.fn.inlineditor and calling method syntax is ```$.fn.
 
 |Name          |Parameters      |Description                                                                              |
 |:-------------|:---------------|:----------------------------------------------------------------------------------------|
-|getOptions    |none            |Returns the options property as array.                                                   |
-|setOptions    |array           |Sets the options property.                                                               |
+|getElement    |none            |Returns the editing area jquery object.                                                  |
+|getOption     |none            |Returns the option property as array.                                                    |
+|setOption     |array           |Sets the option property.                                                                |
 |getValue      |none            |Returns the editing area content as string.                                              |
 |setValue      |string          |Sets the editing area content.                                                           |
 |execCommand   |string, string  |Execute the given command with given parameters.                                         |

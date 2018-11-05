@@ -5,7 +5,7 @@ Inlineditor is a WYSIWYG editor for web pages. Its goal is to be powerful, simpl
 <br />
 
 ### Features
-- Extremely lightweight and easy to use
+- Extremely lightweight and realy easy to use
 - Minimum dependencies
 - Configurable
 - Multiple instances

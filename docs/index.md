@@ -73,8 +73,8 @@ The options is defined in $.fn.inlineditor.defaults
 |styles              |array   |null    |User defined styles and CSS rules.                                                    |
 |fonts               |array   |'Arial', 'Times', 'Courier', 'Impact', 'Tahoma'|Editor standard default fonts.                 |
 |additionalFonts     |array   |null    |User defined addtional fonts.                                                         |
-|sizes               |array   |'xx-small', 'x-small', 'small', 'normal', 'large', 'x-large', 'xx-large'                       |
-|elements            |array   |'div', 'p', 'form', 'label', ['input', 'text'], 'password', 'textarea', 'select', 'checkbox', 'radio', 'submit', 'reset', 'button'   |                                                                                      |
+|sizes               |array   |'xx-small', 'x-small', 'small', 'normal', 'large', 'x-large', 'xx-large' |---                  |
+|elements            |array   |'div', 'p', 'form', 'label', ['input', 'text'], 'password', 'textarea', 'select', 'checkbox', 'radio', 'submit', 'reset', 'button'   |Tag names or array of [title, tag].                                                            |
 |emoji               |array   |[128513, 128591], [9986, 10160], [128640, 128704] |Range or exact unicode value.               |
 |colors              |array   |140 named colors |[Color Names Supported by All Browsers](https://www.w3schools.com/colors/colors_names.asp)                                    |
 |generateStyle       |boolean |false   |True generates style attributes in markup, false generates presentational elements.   |

@@ -4,7 +4,7 @@ Inlineditor is a WYSIWYG editor for websites. Its goal is to be powerful and sim
 site: https://mjahmadi.github.io/inlineditor/
 
 
-## Screenshot
+### Screenshots
 <p align="center">
   <img src="https://github.com/mjahmadi/inlineditor/blob/master/docs/screenshot.png" />
 </p>

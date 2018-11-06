@@ -3,6 +3,8 @@ Inlineditor is a WYSIWYG editor for websites. Its goal is to be powerful and sim
 
 site: https://mjahmadi.github.io/inlineditor/
 
+<br/>
+<br/>
 
 ### Screenshots
 <p align="center">

@@ -5,5 +5,5 @@ site: https://mjahmadi.github.io/inlineditor/
 
 
 <p align="center">
-  <img src="https://github.com/mjahmadi/ghoghnoos-builder/blob/master/docs/screenshot.png" />
+  <img src="https://github.com/mjahmadi/inlineditor/blob/master/docs/screenshot.png" />
 </p>

@@ -3,6 +3,18 @@ Inlineditor is a WYSIWYG editor for websites. Its goal is to be powerful and sim
 
 site: https://mjahmadi.github.io/inlineditor/
 
+<br />
+<br />
+
+### Features
+- Extremely lightweight and realy easy to use
+- Minimum dependencies
+- Configurable
+- Multiple instances
+- More than 40 built-in commands
+- Multilingual and RTL support
+- Themable
+
 <br/>
 <br/>
 

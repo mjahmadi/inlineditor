@@ -187,7 +187,6 @@ var editor = $.fn.inlineditor('div#container', {
 <br />
 <br />
 
----
 
 ### Browser compatibility
 
@@ -206,6 +205,11 @@ var editor = $.fn.inlineditor('div#container', {
 |Opera for Android     |>= 29           |copy, cut commands will not work correctly in older versions.     |
 |iOS Safari            |>= 10           |copy, cut commands will not work correctly in older versions.     |
 
+
 <br />
+<br />
+
+
+### Screenshot
 
 <img src="https://github.com/mjahmadi/inlineditor/raw/master/docs/screenshot.png" style="max-width:100%;">

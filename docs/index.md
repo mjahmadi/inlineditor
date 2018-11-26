@@ -210,6 +210,8 @@ var editor = $.fn.inlineditor('div#container', {
 <br />
 
 
-### Screenshot
+### Screenshots
 
-<img src="https://github.com/mjahmadi/inlineditor/raw/master/docs/screenshot.png" style="max-width:100%;">
+<a target="_blank" href="https://github.com/mjahmadi/inlineditor/raw/master/docs/screenshot.png">
+  <img src="https://github.com/mjahmadi/inlineditor/raw/master/docs/screenshot.png" style="max-width:100%"/>
+</a>
